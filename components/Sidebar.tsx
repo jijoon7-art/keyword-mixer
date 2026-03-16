@@ -6,7 +6,8 @@ import {
   Shuffle, Type, Youtube, Link2, Hash, Menu, X,
   FileJson, Lock, Palette, Binary, Ruler, QrCode,
   ImageDown, FileText, Clock, GitCompare, FilePlus,
-  ImageIcon, Ticket, Smile, AlignLeft, Calculator
+  ImageIcon, Ticket, Smile, AlignLeft, Calculator,
+  Baby, Calendar, DollarSign, Timer
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -26,7 +27,11 @@ const MENU = [
     items: [
       { href: '/text-tools', label: '텍스트 도구 모음', icon: AlignLeft },
       { href: '/calculators', label: '계산기 모음', icon: Calculator },
+      { href: '/age-calculator', label: '나이 계산기', icon: Baby },
+      { href: '/dday-calculator', label: 'D-day 계산기', icon: Calendar },
+      { href: '/exchange-rate', label: '환율 계산기', icon: DollarSign },
       { href: '/lotto', label: '로또 번호 생성기', icon: Ticket },
+      { href: '/timer', label: '타이머 / 스톱워치', icon: Timer },
       { href: '/emoji-search', label: '이모지 검색기', icon: Smile },
     ],
   },
@@ -41,6 +46,7 @@ const MENU = [
   {
     category: '개발자 도구',
     items: [
+      { href: '/json-formatter', label: 'JSON 포맷터', icon: FileJson },
       { href: '/json-csv', label: 'JSON ↔ CSV 변환기', icon: FileJson },
       { href: '/base64', label: 'Base64 인코더/디코더', icon: Binary },
       { href: '/markdown-editor', label: '마크다운 에디터', icon: FileText },

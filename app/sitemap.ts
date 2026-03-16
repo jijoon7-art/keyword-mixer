@@ -3,9 +3,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://keyword-mixer.vercel.app'
   const tools = [
     'char-counter','youtube-tags','hashtag-generator','utm-builder',
-    'text-tools','calculators','lotto','emoji-search',
+    'text-tools','calculators','age-calculator','dday-calculator','exchange-rate','lotto','timer','emoji-search',
     'image-compressor','image-editor','pdf-tools',
-    'json-csv','base64','markdown-editor','text-diff','css-gradient','regex-tester',
+    'json-formatter','json-csv','base64','markdown-editor','text-diff','css-gradient','regex-tester',
     'unit-converter','timezone-converter','password-generator','qr-generator','color-converter',
   ]
   return [
