@@ -191,7 +191,7 @@ export default function ImageEditor() {
       <div className="flex rounded-xl border border-surface-border overflow-hidden mb-6">
         {TABS.map(t => (
           <button key={t.key} onClick={() => setTab(t.key as Tab)}
-            className={`flex-1 py-2.5 text-xs font-medium transition-all ${tab === t.key ? 'bg-brand-500 text-black font-bold' : 'bg-surface-card text-slate-300 hover:text-white'}`}>
+            className={`flex-1 py-2.5 text-xs font-medium transition-all ${tab === t.key ? 'bg-brand-500 text-white font-bold' : 'bg-surface-card text-slate-300 hover:text-white'}`}>
             {t.label}
           </button>
         ))}
@@ -235,7 +235,7 @@ export default function ImageEditor() {
             <input type="range" min={1} max={100} value={resizeQuality} onChange={e => setResizeQuality(+e.target.value)} className="w-full accent-green-500" />
           </div>
           <button onClick={handleResize} disabled={processing || !image}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-black font-bold text-sm transition-all flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-white font-bold text-sm transition-all flex items-center justify-center gap-2">
             {processing ? <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" /> : <Download size={15} />}
             {processing ? '처리 중...' : `${width}×${height}px로 저장`}
           </button>
@@ -250,7 +250,7 @@ export default function ImageEditor() {
             <div className="flex gap-2">
               {FORMAT_OPTIONS.map(f => (
                 <button key={f.value} onClick={() => setFormat(f.value)}
-                  className={`flex-1 py-3 rounded-lg border text-sm font-bold transition-all ${format === f.value ? 'bg-brand-500 border-brand-500 text-black' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
+                  className={`flex-1 py-3 rounded-lg border text-sm font-bold transition-all ${format === f.value ? 'bg-brand-500 border-brand-500 text-white' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
                   {f.label}
                 </button>
               ))}
@@ -268,7 +268,7 @@ export default function ImageEditor() {
             <div className="p-2 rounded-lg bg-surface-DEFAULT border border-surface-border text-slate-400"><p className="font-bold text-slate-200">WebP</p><p>웹 최적화</p></div>
           </div>
           <button onClick={handleConvert} disabled={processing || !image}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-black font-bold text-sm transition-all flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-white font-bold text-sm transition-all flex items-center justify-center gap-2">
             {processing ? <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" /> : <Download size={15} />}
             {processing ? '처리 중...' : `${FORMAT_OPTIONS.find(f => f.value === format)?.label}로 변환`}
           </button>
@@ -284,7 +284,7 @@ export default function ImageEditor() {
             <div className="flex gap-2 mt-2">
               {[90, 180, 270].map(d => (
                 <button key={d} onClick={() => setRotation(d)}
-                  className={`flex-1 py-2 rounded-lg border text-xs font-mono transition-all ${rotation === d ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
+                  className={`flex-1 py-2 rounded-lg border text-xs font-mono transition-all ${rotation === d ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
                   {d}°
                 </button>
               ))}
@@ -292,16 +292,16 @@ export default function ImageEditor() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <button onClick={() => setFlipH(!flipH)}
-              className={`flex items-center justify-center gap-2 py-3 rounded-lg border text-sm transition-all ${flipH ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
+              className={`flex items-center justify-center gap-2 py-3 rounded-lg border text-sm transition-all ${flipH ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
               <FlipHorizontal size={15} /> 좌우 뒤집기
             </button>
             <button onClick={() => setFlipV(!flipV)}
-              className={`flex items-center justify-center gap-2 py-3 rounded-lg border text-sm transition-all ${flipV ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
+              className={`flex items-center justify-center gap-2 py-3 rounded-lg border text-sm transition-all ${flipV ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
               <FlipVertical size={15} /> 상하 뒤집기
             </button>
           </div>
           <button onClick={handleRotate} disabled={processing || !image}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-black font-bold text-sm transition-all flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-white font-bold text-sm transition-all flex items-center justify-center gap-2">
             {processing ? <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" /> : <Download size={15} />}
             {processing ? '처리 중...' : '회전/뒤집기 적용 & 저장'}
           </button>
@@ -331,7 +331,7 @@ export default function ImageEditor() {
             <RotateCcw size={12} /> 초기화
           </button>
           <button onClick={handleFilter} disabled={processing || !image}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-black font-bold text-sm transition-all flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-white font-bold text-sm transition-all flex items-center justify-center gap-2">
             {processing ? <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" /> : <Download size={15} />}
             {processing ? '처리 중...' : '필터 적용 & 저장'}
           </button>
@@ -361,7 +361,7 @@ export default function ImageEditor() {
             <div className="grid grid-cols-3 gap-1.5">
               {[['top-left','좌상단'],['top-right','우상단'],['center','가운데'],['bottom-left','좌하단'],['bottom-right','우하단']].map(([val, label]) => (
                 <button key={val} onClick={() => setWmPosition(val)}
-                  className={`py-2 rounded-lg border text-xs transition-all ${wmPosition === val ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
+                  className={`py-2 rounded-lg border text-xs transition-all ${wmPosition === val ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
                   {label}
                 </button>
               ))}
@@ -377,7 +377,7 @@ export default function ImageEditor() {
             </div>
           </div>
           <button onClick={handleWatermark} disabled={processing || !image || !wmText}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-black font-bold text-sm transition-all flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 text-white font-bold text-sm transition-all flex items-center justify-center gap-2">
             {processing ? <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" /> : <Download size={15} />}
             {processing ? '처리 중...' : '워터마크 추가 & 저장'}
           </button>

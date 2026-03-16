@@ -91,7 +91,7 @@ export default function QRGenerator() {
                 <button
                   key={t.key}
                   onClick={() => { setType(t.key); setValue('') }}
-                  className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-all ${type === t.key ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300 bg-surface-DEFAULT'}`}
+                  className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-all ${type === t.key ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300 bg-surface-DEFAULT'}`}
                 >
                   {t.label}
                 </button>
@@ -123,7 +123,7 @@ export default function QRGenerator() {
               <p className="text-xs text-slate-500 mb-1.5">크기 (px)</p>
               <div className="flex gap-1.5">
                 {SIZES.map(s => (
-                  <button key={s} onClick={() => setSize(s)} className={`flex-1 py-1.5 rounded-lg border text-xs font-mono transition-all ${size === s ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
+                  <button key={s} onClick={() => setSize(s)} className={`flex-1 py-1.5 rounded-lg border text-xs font-mono transition-all ${size === s ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
                     {s}
                   </button>
                 ))}
@@ -156,7 +156,7 @@ export default function QRGenerator() {
           <button
             onClick={generate}
             disabled={!value.trim()}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)]"
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)]"
           >
             QR코드 생성하기
           </button>
@@ -176,7 +176,7 @@ export default function QRGenerator() {
               <div className="flex gap-2 w-full">
                 <button
                   onClick={download}
-                  className="flex-1 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-400 text-black font-bold text-sm transition-all flex items-center justify-center gap-2"
+                  className="flex-1 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm transition-all flex items-center justify-center gap-2"
                 >
                   <Download size={14} /> PNG 다운로드
                 </button>

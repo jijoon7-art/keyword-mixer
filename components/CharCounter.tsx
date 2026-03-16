@@ -123,12 +123,12 @@ export default function CharCounter() {
               disabled={!text}
               className={`group relative flex flex-col items-start px-3 py-2 rounded-lg border text-xs transition-all disabled:opacity-30 disabled:cursor-not-allowed ${
                 lastAction === action.key
-                  ? 'bg-brand-500 border-brand-500 text-black font-bold'
+                  ? 'bg-brand-500 border-brand-500 text-white font-bold'
                   : 'bg-surface-card border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300 hover:bg-brand-500/5'
               }`}
             >
               <span className="font-medium">{action.label}</span>
-              <span className={`text-xs mt-0.5 ${lastAction === action.key ? 'text-black/70' : 'text-slate-600'}`}>
+              <span className={`text-xs mt-0.5 ${lastAction === action.key ? 'text-white/70' : 'text-slate-600'}`}>
                 {action.desc}
               </span>
             </button>
@@ -183,7 +183,7 @@ export default function CharCounter() {
           onChange={(e) => setText(e.target.value)}
           placeholder="여기에 텍스트를 입력하세요..."
           rows={12}
-          className="w-full bg-transparent px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none resize-none leading-relaxed"
+          className="w-full bg-transparent px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none resize-none leading-relaxed"
         />
       </div>
 

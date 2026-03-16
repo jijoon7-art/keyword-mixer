@@ -179,7 +179,7 @@ export default function PdfTools() {
       <div className="flex rounded-xl border border-surface-border overflow-hidden mb-6">
         {TABS.map(t => (
           <button key={t.key} onClick={() => { setTab(t.key as Tab); setError(''); setSuccess('') }}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-all ${tab === t.key ? 'bg-brand-500 text-black font-bold' : 'bg-surface-card text-slate-300 hover:text-white'}`}>
+            className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-all ${tab === t.key ? 'bg-brand-500 text-white font-bold' : 'bg-surface-card text-slate-300 hover:text-white'}`}>
             {t.icon}{t.label}
           </button>
         ))}
@@ -229,7 +229,7 @@ export default function PdfTools() {
           )}
 
           <button onClick={mergePDFs} disabled={processing || files.length < 2}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2">
             {processing ? <><span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />처리 중...</> : <><Download size={15} />PDF 합치기 & 다운로드</>}
           </button>
         </div>
@@ -258,7 +258,7 @@ export default function PdfTools() {
           </div>
 
           <button onClick={splitPDF} disabled={processing || !splitFile}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2">
             {processing ? <><span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />처리 중...</> : <><Scissors size={15} />PDF 분리 & 다운로드</>}
           </button>
         </div>
@@ -287,7 +287,7 @@ export default function PdfTools() {
           </div>
 
           <button onClick={deletePagesFromPDF} disabled={processing || !deleteFile}
-            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2">
+            className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2">
             {processing ? <><span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />처리 중...</> : <><Trash2 size={15} />페이지 삭제 & 다운로드</>}
           </button>
         </div>

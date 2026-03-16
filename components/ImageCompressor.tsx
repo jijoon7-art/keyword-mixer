@@ -133,7 +133,7 @@ export default function ImageCompressor() {
             <label className="text-sm text-slate-300 font-medium block mb-2">최대 너비 (px)</label>
             <div className="flex gap-1.5">
               {[800, 1280, 1920, 3840].map(w => (
-                <button key={w} onClick={() => setMaxWidth(w)} className={`flex-1 py-1.5 text-xs rounded-lg border transition-all font-mono ${maxWidth === w ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
+                <button key={w} onClick={() => setMaxWidth(w)} className={`flex-1 py-1.5 text-xs rounded-lg border transition-all font-mono ${maxWidth === w ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 bg-surface-DEFAULT'}`}>
                   {w >= 1000 ? `${w/1000}K` : w}
                 </button>
               ))}
@@ -213,7 +213,7 @@ export default function ImageCompressor() {
       )}
 
       {images.some(i => i.status === 'pending') && (
-        <button onClick={compressAll} className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)]">
+        <button onClick={compressAll} className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)]">
           이미지 압축하기
         </button>
       )}

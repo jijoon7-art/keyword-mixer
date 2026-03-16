@@ -137,7 +137,7 @@ export default function PasswordGenerator() {
           <div className="flex gap-1.5">
             {[1, 3, 5, 10].map(n => (
               <button key={n} onClick={() => setCount(n)}
-                className={`w-10 h-8 rounded-lg border text-sm font-mono transition-all ${count === n ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300'}`}>
+                className={`w-10 h-8 rounded-lg border text-sm font-mono transition-all ${count === n ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300'}`}>
                 {n}
               </button>
             ))}
@@ -148,7 +148,7 @@ export default function PasswordGenerator() {
       {/* Generate button */}
       <button
         onClick={generate}
-        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2 mb-6"
+        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2 mb-6"
       >
         <RefreshCw size={16} />
         비밀번호 생성하기

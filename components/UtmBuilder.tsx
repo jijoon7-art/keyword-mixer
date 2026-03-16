@@ -96,7 +96,7 @@ export default function UtmBuilder() {
                       onClick={() => f.set(p)}
                       className={`text-xs px-2 py-0.5 rounded border transition-all ${
                         f.value === p
-                          ? 'bg-brand-500 border-brand-500 text-black font-bold'
+                          ? 'bg-brand-500 border-brand-500 text-white font-bold'
                           : 'border-surface-border text-slate-500 hover:text-brand-400 hover:border-brand-500/40'
                       }`}
                     >
@@ -123,7 +123,7 @@ export default function UtmBuilder() {
                 copied
                   ? 'bg-brand-500/20 border border-brand-500/40 text-brand-400'
                   : result
-                  ? 'bg-brand-500 hover:bg-brand-400 text-black shadow-[0_4px_15px_rgba(34,197,94,0.3)]'
+                  ? 'bg-brand-500 hover:bg-brand-400 text-white shadow-[0_4px_15px_rgba(34,197,94,0.3)]'
                   : 'bg-surface-border text-slate-600 cursor-not-allowed'
               }`}
             >

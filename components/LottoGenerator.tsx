@@ -113,13 +113,13 @@ export default function LottoGenerator() {
             <label className="text-xs text-slate-400 mb-1.5 block font-medium">포함할 번호 (최대 5개)</label>
             <input value={includeNums} onChange={e => setIncludeNums(e.target.value)}
               placeholder="예: 7, 14, 27"
-              className="w-full bg-[#0f1117] border border-surface-border rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-500/50 transition-all" />
+              className="w-full bg-[#0f1117] border border-surface-border rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-500/50 transition-all" />
           </div>
           <div>
             <label className="text-xs text-slate-400 mb-1.5 block font-medium">제외할 번호</label>
             <input value={excludeNums} onChange={e => setExcludeNums(e.target.value)}
               placeholder="예: 1, 2, 3"
-              className="w-full bg-[#0f1117] border border-surface-border rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-500/50 transition-all" />
+              className="w-full bg-[#0f1117] border border-surface-border rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-500/50 transition-all" />
           </div>
         </div>
 

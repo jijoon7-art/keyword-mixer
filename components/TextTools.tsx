@@ -112,7 +112,7 @@ export default function TextTools() {
           </div>
           <textarea value={input} onChange={e => setInput(e.target.value)}
             placeholder="텍스트를 입력하세요..." rows={14}
-            className="w-full bg-transparent px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none resize-none font-mono leading-relaxed" />
+            className="w-full bg-transparent px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none resize-none font-mono leading-relaxed" />
         </div>
 
         <div className="rounded-xl border border-surface-border bg-[#1a1d27] overflow-hidden">
@@ -136,7 +136,7 @@ export default function TextTools() {
           </div>
           <textarea value={output} readOnly
             placeholder="변환 결과가 여기에 표시됩니다" rows={14}
-            className="w-full bg-transparent px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none resize-none font-mono leading-relaxed" />
+            className="w-full bg-transparent px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none resize-none font-mono leading-relaxed" />
         </div>
       </div>
 

@@ -66,13 +66,13 @@ export default function Base64Tool() {
         <div className="flex rounded-lg border border-surface-border overflow-hidden">
           <button
             onClick={() => { setMode('encode'); reset() }}
-            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'encode' ? 'bg-brand-500 text-black' : 'bg-surface-card text-slate-300 hover:text-white'}`}
+            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'encode' ? 'bg-brand-500 text-white' : 'bg-surface-card text-slate-300 hover:text-white'}`}
           >
             인코딩 (텍스트 → Base64)
           </button>
           <button
             onClick={() => { setMode('decode'); reset() }}
-            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'decode' ? 'bg-brand-500 text-black' : 'bg-surface-card text-slate-300 hover:text-white'}`}
+            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'decode' ? 'bg-brand-500 text-white' : 'bg-surface-card text-slate-300 hover:text-white'}`}
           >
             디코딩 (Base64 → 텍스트)
           </button>
@@ -146,7 +146,7 @@ export default function Base64Tool() {
       <button
         onClick={convert}
         disabled={!input.trim()}
-        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2"
+        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2"
       >
         <ArrowLeftRight size={16} />
         {mode === 'encode' ? 'Base64 인코딩' : 'Base64 디코딩'}

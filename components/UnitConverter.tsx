@@ -123,7 +123,7 @@ export default function UnitConverter() {
               setToUnit(CATEGORIES[c as CategoryKey].units[1])
             }}
             className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
-              category === c ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300 bg-surface-card'
+              category === c ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300 bg-surface-card'
             }`}
           >
             {c}

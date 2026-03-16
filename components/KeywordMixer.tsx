@@ -296,7 +296,7 @@ export default function KeywordMixer() {
                         onClick={() => togglePattern(key)}
                         className={`text-xs font-mono px-3 py-1.5 rounded-lg border transition-all ${
                           active
-                            ? 'bg-brand-500 border-brand-500 text-black font-bold shadow-[0_0_10px_rgba(34,197,94,0.3)]'
+                            ? 'bg-brand-500 border-brand-500 text-white font-bold shadow-[0_0_10px_rgba(34,197,94,0.3)]'
                             : 'bg-surface-DEFAULT border-surface-border text-slate-400 hover:border-brand-500/40 hover:text-brand-300'
                         }`}
                       >
@@ -333,7 +333,7 @@ export default function KeywordMixer() {
                     onClick={() => setSeparator(s.value)}
                     className={`text-xs px-2.5 py-1.5 rounded-lg border transition-all font-mono ${
                       separator === s.value
-                        ? 'bg-brand-500 border-brand-500 text-black font-bold'
+                        ? 'bg-brand-500 border-brand-500 text-white font-bold'
                         : 'bg-surface-DEFAULT border-surface-border text-slate-400 hover:border-brand-500/40 hover:text-brand-300'
                     }`}
                   >
@@ -372,7 +372,7 @@ export default function KeywordMixer() {
                     onClick={() => setCaseMode(opt.val)}
                     className={`flex-1 text-xs py-2 rounded-lg border transition-all font-medium ${
                       caseMode === opt.val
-                        ? 'bg-brand-500 border-brand-500 text-black font-bold'
+                        ? 'bg-brand-500 border-brand-500 text-white font-bold'
                         : 'bg-surface-DEFAULT border-surface-border text-slate-400 hover:border-brand-500/40 hover:text-brand-300'
                     }`}
                   >
@@ -386,7 +386,7 @@ export default function KeywordMixer() {
             <button
               onClick={handleCombine}
               disabled={combining || selectedPatterns.size === 0 || totalInput === 0}
-              className="mt-auto w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(34,197,94,0.3)] hover:shadow-[0_4px_28px_rgba(34,197,94,0.5)] active:scale-[0.98]"
+              className="mt-auto w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(34,197,94,0.3)] hover:shadow-[0_4px_28px_rgba(34,197,94,0.5)] active:scale-[0.98]"
             >
               {combining ? (
                 <>

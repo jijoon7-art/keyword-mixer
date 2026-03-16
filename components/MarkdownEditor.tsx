@@ -172,7 +172,7 @@ a{color:#22c55e}
               { key: 'preview', icon: <Eye size={13} />, label: '미리보기' },
             ].map(m => (
               <button key={m.key} onClick={() => setMode(m.key as typeof mode)}
-                className={`flex items-center gap-1 px-3 py-1.5 text-xs transition-all ${mode === m.key ? 'bg-brand-500 text-black font-bold' : 'text-slate-300 hover:text-white bg-surface-DEFAULT'}`}>
+                className={`flex items-center gap-1 px-3 py-1.5 text-xs transition-all ${mode === m.key ? 'bg-brand-500 text-white font-bold' : 'text-slate-300 hover:text-white bg-surface-DEFAULT'}`}>
                 {m.icon}{m.label}
               </button>
             ))}

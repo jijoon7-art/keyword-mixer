@@ -155,7 +155,7 @@ export default function TimezoneConverter() {
         <div className="flex flex-wrap gap-2">
           {TIMEZONES.map(t => (
             <button key={t.tz} onClick={() => toggleTz(t.tz)}
-              className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-all ${selectedTzs.includes(t.tz) ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300'}`}>
+              className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-all ${selectedTzs.includes(t.tz) ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300'}`}>
               {t.flag} {t.label}
             </button>
           ))}

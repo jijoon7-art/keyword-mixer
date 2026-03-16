@@ -122,13 +122,13 @@ export default function JsonCsvConverter() {
         <div className="flex rounded-lg border border-surface-border overflow-hidden">
           <button
             onClick={() => { setMode('json2csv'); setInput(''); setOutput(''); setError('') }}
-            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'json2csv' ? 'bg-brand-500 text-black' : 'bg-surface-card text-slate-300 hover:text-white'}`}
+            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'json2csv' ? 'bg-brand-500 text-white' : 'bg-surface-card text-slate-300 hover:text-white'}`}
           >
             JSON → CSV
           </button>
           <button
             onClick={() => { setMode('csv2json'); setInput(''); setOutput(''); setError('') }}
-            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'csv2json' ? 'bg-brand-500 text-black' : 'bg-surface-card text-slate-300 hover:text-white'}`}
+            className={`px-4 py-2 text-sm font-medium transition-all ${mode === 'csv2json' ? 'bg-brand-500 text-white' : 'bg-surface-card text-slate-300 hover:text-white'}`}
           >
             CSV → JSON
           </button>
@@ -145,7 +145,7 @@ export default function JsonCsvConverter() {
             <button
               key={d.label}
               onClick={() => setDelimiter(d.val)}
-              className={`text-xs px-2.5 py-1.5 rounded-lg border transition-all ${delimiter === d.val ? 'bg-brand-500 border-brand-500 text-black font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300'}`}
+              className={`text-xs px-2.5 py-1.5 rounded-lg border transition-all ${delimiter === d.val ? 'bg-brand-500 border-brand-500 text-white font-bold' : 'border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300'}`}
             >
               {d.label}
             </button>
@@ -215,7 +215,7 @@ export default function JsonCsvConverter() {
       <button
         onClick={convert}
         disabled={!input.trim()}
-        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2"
+        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2"
       >
         <ArrowLeftRight size={16} />
         {mode === 'json2csv' ? 'JSON → CSV 변환' : 'CSV → JSON 변환'}

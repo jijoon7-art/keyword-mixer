@@ -148,7 +148,7 @@ export default function TextDiff() {
       </div>
 
       <button onClick={compare} disabled={!text1.trim() || !text2.trim()}
-        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] mb-6">
+        className="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all shadow-[0_4px_15px_rgba(34,197,94,0.3)] mb-6">
         텍스트 비교하기
       </button>
 
