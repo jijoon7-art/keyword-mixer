@@ -84,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <div className="flex">
           <Sidebar />
-          <main className="flex-1 lg:ml-52 min-h-[calc(100vh-56px)]">
+          <main className="flex-1 lg:ml-52 min-h-[calc(100vh-44px)]">
             {children}
           </main>
         </div>
