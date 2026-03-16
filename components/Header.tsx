@@ -99,7 +99,7 @@ export default function Header() {
           )}
         </div>
 
-        <span className="text-slate-600 text-xs hidden md:block flex-shrink-0">무료 SEO 도구 모음</span>
+        <span className="text-slate-700 text-xs hidden md:block flex-shrink-0 ml-auto">23개 무료 도구</span>
       </div>
     </header>
   )

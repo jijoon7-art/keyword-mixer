@@ -108,10 +108,6 @@ export default function Sidebar() {
             ))}
           </div>
         </nav>
-
-        <div className="px-3 py-1.5 border-t border-surface-border flex-shrink-0">
-          <p className="text-xs text-slate-600 text-center">23개 무료 도구</p>
-        </div>
       </aside>
     </>
   )
