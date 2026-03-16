@@ -64,7 +64,7 @@ export default function PdfTools() {
         pages.forEach(p => merged.addPage(p))
       }
       const out = await merged.save()
-      const blob = new Blob([out], { type: 'application/pdf' })
+      const blob = new Blob([out as unknown as BlobPart], { type: 'application/pdf' })
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a'); a.href = url
       a.download = `merged_${Date.now()}.pdf`; a.click()
@@ -102,7 +102,7 @@ export default function PdfTools() {
         const pages = await doc.copyPages(src, indices)
         pages.forEach(p => doc.addPage(p))
         const out = await doc.save()
-        const blob = new Blob([out], { type: 'application/pdf' })
+        const blob = new Blob([out as unknown as BlobPart], { type: 'application/pdf' })
         const url = URL.createObjectURL(blob)
         const a = document.createElement('a'); a.href = url
         a.download = `split_${range.replace('-', '_')}_${Date.now()}.pdf`; a.click()
@@ -144,7 +144,7 @@ export default function PdfTools() {
       const pages = await doc.copyPages(src, keep)
       pages.forEach(p => doc.addPage(p))
       const out = await doc.save()
-      const blob = new Blob([out], { type: 'application/pdf' })
+      const blob = new Blob([out as unknown as BlobPart], { type: 'application/pdf' })
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a'); a.href = url
       a.download = `edited_${Date.now()}.pdf`; a.click()
