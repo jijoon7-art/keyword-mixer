@@ -56,20 +56,28 @@ export default function Sidebar() {
 
   return (
     <>
+      {/* 모바일 토글 버튼 — 헤더와 같은 높이, 항상 보임 */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="lg:hidden fixed top-16 left-4 z-50 w-9 h-9 bg-surface-card border border-surface-border rounded-lg flex items-center justify-center text-slate-400 hover:text-brand-400 transition-all"
+        className="lg:hidden fixed top-0 left-0 z-50 w-14 h-14 flex items-center justify-center text-slate-300 hover:text-brand-400 transition-all"
       >
-        {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
+      {/* 오버레이 */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black/50 z-40" onClick={() => setMobileOpen(false)} />
+        <div
+          className="lg:hidden fixed inset-0 bg-black/60 z-40"
+          onClick={() => setMobileOpen(false)}
+        />
       )}
 
+      {/* 사이드바 — 불투명 배경 */}
       <aside className={`
-        fixed top-14 left-0 h-[calc(100vh-56px)] w-52 border-r border-surface-border bg-surface-card/50 backdrop-blur-md z-40
-        transition-transform duration-300
+        fixed top-14 left-0 h-[calc(100vh-56px)] w-52
+        border-r border-surface-border
+        bg-surface-card
+        z-40 transition-transform duration-300
         ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         <nav className="p-3 flex flex-col gap-4 overflow-y-auto h-full">
