@@ -87,7 +87,7 @@ export default function HashtagGenerator() {
                   onClick={() => setPlatform(p)}
                   className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${
                     platform === p
-                      ? 'bg-brand-500 border-brand-500 text-black font-bold'
+                      ? 'bg-brand-500 border-brand-500 text-white font-bold'
                       : 'border-surface-border text-slate-400 hover:border-brand-500/40 hover:text-brand-300'
                   }`}
                 >

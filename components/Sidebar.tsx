@@ -56,10 +56,11 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* 모바일 토글 버튼 — 헤더와 같은 높이, 항상 보임 */}
+      {/* 모바일 토글 버튼 */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="lg:hidden fixed top-0 left-0 z-50 w-14 h-14 flex items-center justify-center text-slate-300 hover:text-brand-400 transition-all"
+        style={{ backgroundColor: 'transparent' }}
       >
         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
@@ -72,14 +73,16 @@ export default function Sidebar() {
         />
       )}
 
-      {/* 사이드바 — 불투명 배경 */}
-      <aside className={`
-        fixed top-14 left-0 h-[calc(100vh-56px)] w-52
-        border-r border-surface-border
-        bg-[#1a1d27]
-        z-40 transition-transform duration-300
-        ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-      `}>
+      {/* 사이드바 — style로 배경색 강제 지정 */}
+      <aside
+        className={`
+          fixed top-14 left-0 h-[calc(100vh-56px)] w-52
+          border-r border-surface-border
+          z-40 transition-transform duration-300
+          ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}
+        style={{ backgroundColor: '#1a1d27' }}
+      >
         <nav className="p-3 flex flex-col gap-4 overflow-y-auto h-full">
           {MENU.map((section) => (
             <div key={section.category}>
