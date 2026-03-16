@@ -1,23 +1,24 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import Header from '@/components/Header'
+import Sidebar from '@/components/Sidebar'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://keywordmixer.app'),
+  metadataBase: new URL('https://keyword-mixer.vercel.app'),
   title: {
     default: '키워드 조합기 — 무료 키워드 생성기 · SEO키워드 자동 조합 도구 | Keyword Mixer',
     template: '%s | 키워드 조합기 · Keyword Mixer',
   },
   description:
-    '무료 키워드 조합기 · 키워드 생성기. SEO키워드를 그룹별로 자동 조합하고 중복 제거 후 Excel·CSV·텍스트로 다운로드. Free keyword combiner, mixer & generator tool for SEO, Google Ads, PPC, long-tail keywords and keyword permutations.',
+    '무료 키워드 조합기 · 키워드 생성기. SEO키워드를 그룹별로 자동 조합하고 중복 제거 후 Excel·CSV·텍스트로 다운로드. 글자수 세기, 유튜브 태그 생성기, UTM Builder, 해시태그 생성기 등 무료 SEO 도구 모음.',
   keywords: [
-    // 한국어 — 실검 기반 1~3순위
     '키워드 조합기', 'SEO키워드', '키워드 생성기',
     '키워드 믹서', '키워드 조합 도구', '키워드 자동 조합',
     '네이버 키워드 조합기', '쇼핑 키워드 조합기',
     '롱테일 키워드 생성기', 'SEO 키워드 도구 무료',
     '스마트스토어 키워드 조합', '쿠팡 키워드 조합',
     '블로그 키워드 조합기', '유튜브 태그 생성기',
-    // 영어 — 경쟁사 분석 기반 고검색량
+    '글자수 세기', '해시태그 생성기', 'UTM 빌더',
     'keyword combiner', 'keyword mixer', 'keyword generator',
     'free keyword combiner', 'keyword combination tool',
     'keyword permutation tool', 'bulk keyword generator',
@@ -25,23 +26,22 @@ export const metadata: Metadata = {
     'keyword merge tool', 'keyword concatenator',
     'Google Ads keyword tool', 'PPC keyword generator',
     'keyword list generator', 'combine keywords',
-    'keyword mixing tool', 'free keyword tool',
-    'keyword combiner free', 'merge keywords',
+    'youtube tag generator', 'hashtag generator', 'UTM builder',
   ],
   authors: [{ name: 'Keyword Mixer' }],
   creator: 'Keyword Mixer',
   openGraph: {
-    title: '키워드 조합기 — 무료 키워드 생성기 · SEO키워드 자동 조합 | Keyword Mixer',
-    description: '무료 키워드 조합기 · 키워드 생성기. SEO키워드 자동 조합 → 엑셀·CSV 다운로드. Free keyword combiner & mixer for SEO, Google Ads, PPC.',
-    url: 'https://keywordmixer.app',
+    title: '키워드 조합기 — 무료 SEO 도구 모음 | Keyword Mixer',
+    description: '키워드 조합기·글자수 세기·유튜브 태그·UTM Builder·해시태그 생성기. 무료 SEO 도구 모음.',
+    url: 'https://keyword-mixer.vercel.app',
     siteName: 'Keyword Mixer',
     locale: 'ko_KR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '키워드 조합기 — Free Keyword Combiner & Mixer Tool',
-    description: '무료 키워드 조합기 · Free keyword combiner, mixer & generator for SEO and Google Ads',
+    title: '키워드 조합기 — Free Keyword Combiner & SEO Tool',
+    description: '무료 키워드 조합기 · Free keyword combiner & SEO tools',
   },
   robots: {
     index: true,
@@ -49,11 +49,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-snippet': -1 },
   },
   alternates: {
-    canonical: 'https://keywordmixer.app',
-    languages: {
-      'ko-KR': 'https://keywordmixer.app',
-      'en-US': 'https://keywordmixer.app/en',
-    },
+    canonical: 'https://keyword-mixer.vercel.app',
   },
 }
 
@@ -62,21 +58,12 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'Keyword Mixer',
   alternateName: ['키워드 조합기', '키워드 믹서', 'Keyword Combiner'],
-  url: 'https://keywordmixer.app',
-  description: '무료 키워드 조합기 · Free keyword combiner, mixer and generator tool for SEO',
+  url: 'https://keyword-mixer.vercel.app',
+  description: '무료 키워드 조합기 · Free keyword combiner and SEO tools',
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Web',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
   inLanguage: ['ko', 'en'],
-  featureList: [
-    '키워드 자동 조합',
-    'Excel/CSV/TXT 다운로드',
-    '중복 제거',
-    '대소문자 변환',
-    'Keyword combination',
-    'Bulk keyword generation',
-    'Long-tail keyword generation',
-  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -89,11 +76,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <meta name="naver-site-verification" content="YOUR_NAVER_CODE" />
         <meta name="google-site-verification" content="YOUR_GOOGLE_CODE" />
-        {/* Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX */}
-        {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossOrigin="anonymous" /> */}
       </head>
       <body className="mesh-bg noise min-h-screen">
-        {children}
+        <Header />
+        <div className="flex">
+          <Sidebar />
+          <main className="flex-1 lg:ml-52 min-h-[calc(100vh-56px)]">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   )
