@@ -76,7 +76,7 @@ export default function Sidebar() {
       <aside className={`
         fixed top-14 left-0 h-[calc(100vh-56px)] w-52
         border-r border-surface-border
-        bg-surface-card
+        bg-[#1a1d27]
         z-40 transition-transform duration-300
         ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>

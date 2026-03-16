@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <header className="border-b border-surface-border sticky top-0 z-50 bg-surface-card">
+    <header className="border-b border-surface-border sticky top-0 z-50 bg-[#1a1d27]">
       <div className="px-4 h-14 flex items-center gap-3">
         {/* 모바일 사이드바 버튼 자리 확보 */}
         <div className="w-9 lg:hidden flex-shrink-0" />
