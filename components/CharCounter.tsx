@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Copy, CheckCheck, RotateCcw } from 'lucide-react'
+import { Copy, CheckCheck, RotateCcw, Scissors } from 'lucide-react'
 
 const LIMITS = [
   { label: '트위터/X', limit: 280, color: 'text-blue-400' },
@@ -12,9 +12,68 @@ const LIMITS = [
   { label: 'Google 제목', limit: 60, color: 'text-yellow-400' },
 ]
 
+const TRIM_ACTIONS = [
+  {
+    key: 'period',
+    label: '마침표 제거',
+    desc: '. 제거',
+    fn: (t: string) => t.replace(/\./g, ''),
+  },
+  {
+    key: 'multispace',
+    label: '연속 공백 → 1칸',
+    desc: '공백 2칸↑ → 1칸',
+    fn: (t: string) => t.replace(/[^\S\n]+/g, ' '),
+  },
+  {
+    key: 'trailspace',
+    label: '줄끝 공백 제거',
+    desc: '각 줄 끝 공백 삭제',
+    fn: (t: string) => t.split('\n').map(l => l.trimEnd()).join('\n'),
+  },
+  {
+    key: 'leadspace',
+    label: '줄앞 공백 제거',
+    desc: '각 줄 앞 공백 삭제',
+    fn: (t: string) => t.split('\n').map(l => l.trimStart()).join('\n'),
+  },
+  {
+    key: 'emptylines',
+    label: '빈 줄 제거',
+    desc: '내용 없는 줄 삭제',
+    fn: (t: string) => t.split('\n').filter(l => l.trim() !== '').join('\n'),
+  },
+  {
+    key: 'duplines',
+    label: '중복 줄 제거',
+    desc: '같은 줄 중복 삭제',
+    fn: (t: string) => {
+      const seen = new Set<string>()
+      return t.split('\n').filter(l => {
+        if (seen.has(l)) return false
+        seen.add(l)
+        return true
+      }).join('\n')
+    },
+  },
+  {
+    key: 'special',
+    label: '특수문자 제거',
+    desc: '!@#$%^&* 등 제거',
+    fn: (t: string) => t.replace(/[^\w\s\uAC00-\uD7A3\u3131-\u318E\n]/g, ''),
+  },
+  {
+    key: 'lowercase',
+    label: '소문자 변환',
+    desc: '영문 대→소문자',
+    fn: (t: string) => t.toLowerCase(),
+  },
+]
+
 export default function CharCounter() {
   const [text, setText] = useState('')
   const [copied, setCopied] = useState(false)
+  const [lastAction, setLastAction] = useState<string | null>(null)
 
   const withSpace = text.length
   const withoutSpace = text.replace(/\s/g, '').length
@@ -29,6 +88,12 @@ export default function CharCounter() {
     setTimeout(() => setCopied(false), 1500)
   }
 
+  const applyAction = (key: string, fn: (t: string) => string) => {
+    setText(prev => fn(prev))
+    setLastAction(key)
+    setTimeout(() => setLastAction(null), 1000)
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       {/* Hero */}
@@ -41,6 +106,34 @@ export default function CharCounter() {
         <p className="text-slate-400 text-base max-w-lg mx-auto">
           공백 포함·제외 글자수, 바이트, 단어수 실시간 계산. SNS·블로그·SEO 글자수 제한 확인.
         </p>
+      </div>
+
+      {/* ── 글자수 줄이기 버튼 ── */}
+      <div className="rounded-xl border border-brand-500/20 bg-brand-500/5 p-4 mb-6">
+        <div className="flex items-center gap-2 mb-3">
+          <Scissors size={14} className="text-brand-400" />
+          <span className="text-sm font-semibold text-slate-200">글자수 줄이기</span>
+          <span className="text-xs text-slate-400">— 버튼을 누르면 텍스트에 즉시 적용됩니다</span>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {TRIM_ACTIONS.map((action) => (
+            <button
+              key={action.key}
+              onClick={() => applyAction(action.key, action.fn)}
+              disabled={!text}
+              className={`group relative flex flex-col items-start px-3 py-2 rounded-lg border text-xs transition-all disabled:opacity-30 disabled:cursor-not-allowed ${
+                lastAction === action.key
+                  ? 'bg-brand-500 border-brand-500 text-black font-bold'
+                  : 'bg-surface-card border-surface-border text-slate-300 hover:border-brand-500/40 hover:text-brand-300 hover:bg-brand-500/5'
+              }`}
+            >
+              <span className="font-medium">{action.label}</span>
+              <span className={`text-xs mt-0.5 ${lastAction === action.key ? 'text-black/70' : 'text-slate-600'}`}>
+                {action.desc}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Stats */}
