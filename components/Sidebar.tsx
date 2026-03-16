@@ -3,10 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  Shuffle, Type, Youtube, Link2, Hash,
-  Menu, X, FileJson, Lock, Palette, Binary,
-  Ruler, QrCode, ImageDown, FileText, Clock, GitCompare,
-  FilePlus, ImageIcon
+  Shuffle, Type, Youtube, Link2, Hash, Menu, X,
+  FileJson, Lock, Palette, Binary, Ruler, QrCode,
+  ImageDown, FileText, Clock, GitCompare, FilePlus,
+  ImageIcon, Ticket, Smile, AlignLeft, Calculator,
+  Gradient, Regex
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -19,6 +20,15 @@ const MENU = [
       { href: '/youtube-tags', label: '유튜브 태그 생성기', icon: Youtube },
       { href: '/hashtag-generator', label: '해시태그 생성기', icon: Hash },
       { href: '/utm-builder', label: 'UTM Builder', icon: Link2 },
+    ],
+  },
+  {
+    category: '텍스트/계산 도구',
+    items: [
+      { href: '/text-tools', label: '텍스트 도구 모음', icon: AlignLeft },
+      { href: '/calculators', label: '계산기 모음', icon: Calculator },
+      { href: '/lotto', label: '로또 번호 생성기', icon: Ticket },
+      { href: '/emoji-search', label: '이모지 검색기', icon: Smile },
     ],
   },
   {
@@ -36,6 +46,8 @@ const MENU = [
       { href: '/base64', label: 'Base64 인코더/디코더', icon: Binary },
       { href: '/markdown-editor', label: '마크다운 에디터', icon: FileText },
       { href: '/text-diff', label: '텍스트 비교기', icon: GitCompare },
+      { href: '/css-gradient', label: 'CSS 그라디언트', icon: Palette },
+      { href: '/regex-tester', label: '정규식 테스터', icon: FileJson },
     ],
   },
   {
@@ -56,31 +68,19 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* 모바일 토글 버튼 */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="lg:hidden fixed top-0 left-0 z-50 w-14 h-14 flex items-center justify-center text-slate-300 hover:text-brand-400 transition-all"
-        style={{ backgroundColor: 'transparent' }}
       >
         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
-      {/* 오버레이 */}
       {mobileOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black/60 z-40"
-          onClick={() => setMobileOpen(false)}
-        />
+        <div className="lg:hidden fixed inset-0 bg-black/60 z-40" onClick={() => setMobileOpen(false)} />
       )}
 
-      {/* 사이드바 — style로 배경색 강제 지정 */}
       <aside
-        className={`
-          fixed top-14 left-0 h-[calc(100vh-56px)] w-52
-          border-r border-surface-border
-          z-40 transition-transform duration-300
-          ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        `}
+        className={`fixed top-14 left-0 h-[calc(100vh-56px)] w-52 border-r border-surface-border z-40 transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
         style={{ backgroundColor: '#1a1d27' }}
       >
         <nav className="p-3 flex flex-col gap-4 overflow-y-auto h-full">
@@ -95,15 +95,8 @@ export default function Sidebar() {
                   const active = pathname === item.href
                   return (
                     <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={() => setMobileOpen(false)}
-                        className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all ${
-                          active
-                            ? 'bg-brand-500/15 border border-brand-500/30 text-brand-400 font-semibold'
-                            : 'text-slate-300 hover:text-white hover:bg-surface-hover'
-                        }`}
-                      >
+                      <Link href={item.href} onClick={() => setMobileOpen(false)}
+                        className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all ${active ? 'bg-brand-500/15 border border-brand-500/30 text-brand-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-surface-hover'}`}>
                         <Icon size={13} className={active ? 'text-brand-400' : 'text-slate-500'} />
                         {item.label}
                       </Link>
