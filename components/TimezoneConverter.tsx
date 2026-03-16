@@ -1,5 +1,6 @@
 'use client'
 
+import ToolFooter from './ToolFooter'
 import { useState, useEffect } from 'react'
 import { Copy, CheckCheck, RefreshCw } from 'lucide-react'
 
@@ -163,13 +164,30 @@ export default function TimezoneConverter() {
       </div>
 
       {/* SEO */}
-      <div className="mt-10 p-6 rounded-xl border border-surface-border/30 bg-surface-card/20">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          타임존 변환기 · 세계 시간 변환 · 시간대 변환기 · 한국시간 변환 · 뉴욕 시간 · 런던 시간 · UTC 변환 ·
-          timezone converter · world clock · time zone converter · KST to EST · KST to GMT ·
-          free timezone tool · international time converter
-        </p>
-      </div>
+      <ToolFooter
+        toolName="타임존 변환기"
+        toolUrl="https://keyword-mixer.vercel.app/timezone-converter"
+        description="세계 주요 도시의 현재 시간을 한눈에 비교."
+        howToUse={[
+          { step: "현재 시간 또는 특정 시간 선택", desc: "현재 시간을 바로 보거나 날짜/시간을 직접 입력하세요." },
+          { step: "기준 타임존 선택", desc: "특정 시간 입력 시 기준이 될 타임존을 선택하세요." },
+          { step: "타임존 추가/제거", desc: "하단에서 보고 싶은 도시의 타임존을 추가하거나 제거하세요." },
+          { step: "결과 복사", desc: "각 타임존의 복사 버튼으로 시간 정보를 클립보드에 복사하세요." },
+        ]}
+        whyUse={[
+          { title: "글로벌 업무 지원", desc: "서울·뉴욕·런던 시간을 동시에 확인해 해외 미팅 시간을 잡을 수 있습니다." },
+          { title: "15개 도시 지원", desc: "아시아·유럽·미주·오세아니아 주요 도시 15개를 지원합니다." },
+          { title: "실시간 시계", desc: "현재 시간이 1초 단위로 실시간 업데이트됩니다." },
+          { title: "특정 시간 변환", desc: "회의나 이벤트 시간을 입력해 여러 나라 현지 시간을 한번에 확인하세요." },
+        ]}
+        faqs={[
+          { q: "서머타임은 자동 반영되나요?", a: "네, 브라우저의 Intl API를 사용해 서머타임(DST)이 자동으로 반영됩니다." },
+          { q: "UTC와 GMT 차이는?", a: "UTC(협정세계시)와 GMT(그리니치 평균시)는 사실상 동일합니다. 현대에는 UTC를 공식적으로 사용합니다." },
+          { q: "한국 표준시(KST)는 UTC 몇 시간 차이?", a: "KST는 UTC+9입니다. 서울 시간 = UTC + 9시간" },
+          { q: "뉴욕과 서울 시차는?", a: "여름에는 13시간, 겨울(EDT→EST 변경 시)에는 14시간 차이납니다." },
+        ]}
+        keywords="타임존 변환기 · 세계 시간 변환 · 시간대 변환기 · 한국시간 변환 · 뉴욕 시간 · 런던 시간 · UTC 변환 · timezone converter · world clock · time zone converter · KST to EST · international time"
+      />
     </div>
   )
 }

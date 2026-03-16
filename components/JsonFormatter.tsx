@@ -1,5 +1,6 @@
 'use client'
 
+import ToolFooter from './ToolFooter'
 import { useState } from 'react'
 import { Copy, CheckCheck, RotateCcw, Download } from 'lucide-react'
 
@@ -196,13 +197,30 @@ export default function JsonFormatter() {
             className="w-full bg-transparent px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none resize-none font-mono leading-relaxed" />
         </div>
       </div>
-
-      <div className="mt-10 p-5 rounded-xl border border-surface-border/30 bg-[#1a1d27]/50">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          JSON 포맷터 · JSON 검증기 · JSON 정렬 · JSON 압축 · JSON 뷰어 · JSON 파서 · JSON 정리 ·
-          JSON formatter · JSON validator · JSON beautifier · JSON minifier · JSON parser · free JSON tool
-        </p>
-      </div>
+      <ToolFooter
+        toolName="JSON 포맷터"
+        toolUrl="https://keyword-mixer.vercel.app/json-formatter"
+        description="JSON 정렬·압축·키 정렬·검증. 오류 위치 표시."
+        howToUse={[
+          { step: '도구 접속', desc: 'JSON 포맷터에 접속하세요.' },
+          { step: '내용 입력', desc: '필요한 내용을 입력하거나 파일을 업로드하세요.' },
+          { step: '결과 확인', desc: '변환/생성된 결과를 즉시 확인하세요.' },
+          { step: '복사 또는 저장', desc: '결과를 복사하거나 파일로 저장하세요.' },
+        ]}
+        whyUse={[
+          { title: '무료 사용', desc: '로그인 없이 완전 무료로 사용할 수 있습니다.' },
+          { title: '빠른 처리', desc: '브라우저에서 즉시 처리되어 빠르게 결과를 얻을 수 있습니다.' },
+          { title: '개인정보 보호', desc: '서버에 데이터가 저장되지 않아 안전합니다.' },
+          { title: '다양한 기능', desc: '시중 유사 도구보다 더 많은 기능을 제공합니다.' },
+        ]}
+        faqs={[
+          { q: '이 도구는 무료인가요?', a: '네, 완전 무료입니다. 로그인도 필요 없습니다.' },
+          { q: '데이터는 서버에 저장되나요?', a: '아니요. 모든 처리는 브라우저에서 이루어지며 서버에 전송되지 않습니다.' },
+          { q: '모바일에서도 사용할 수 있나요?', a: '네, 모바일 브라우저에서도 동일하게 사용할 수 있습니다.' },
+          { q: '오류가 발생하면 어떻게 하나요?', a: '페이지를 새로고침하거나 하단 피드백 폼으로 알려주시면 빠르게 수정하겠습니다.' },
+        ]}
+        keywords="JSON 포맷터 · JSON 검증기 · JSON 정렬 · JSON 압축 · JSON formatter · JSON validator · JSON beautifier · free JSON tool"
+      />
     </div>
   )
 }

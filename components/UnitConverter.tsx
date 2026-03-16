@@ -1,5 +1,6 @@
 'use client'
 
+import ToolFooter from './ToolFooter'
 import { useState } from 'react'
 import { Copy, CheckCheck } from 'lucide-react'
 
@@ -209,13 +210,30 @@ export default function UnitConverter() {
       </div>
 
       {/* SEO */}
-      <div className="mt-10 p-6 rounded-xl border border-surface-border/30 bg-surface-card/20">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          단위 변환기 · 길이 변환 · 무게 변환 · 온도 변환 · 넓이 변환 · 미터 인치 변환 · 섭씨 화씨 변환 ·
-          평 제곱미터 변환 · kg lb 변환 · unit converter · length converter · weight converter ·
-          temperature converter · area converter · metric converter · free unit converter
-        </p>
-      </div>
+      <ToolFooter
+        toolName="단위 변환기"
+        toolUrl="https://keyword-mixer.vercel.app/unit-converter"
+        description="길이·무게·온도·넓이·속도·용량 단위를 즉시 변환."
+        howToUse={[
+          { step: "카테고리 선택", desc: "길이, 무게, 온도, 넓이, 속도, 용량 중 변환할 카테고리를 선택하세요." },
+          { step: "값 입력", desc: "변환할 숫자를 입력하고 원본 단위를 선택하세요." },
+          { step: "단위 선택", desc: "변환할 목표 단위를 선택하면 즉시 결과가 표시됩니다." },
+          { step: "전체 결과 확인", desc: "하단에 모든 단위로 변환된 결과가 한번에 표시됩니다." },
+        ]}
+        whyUse={[
+          { title: "6가지 카테고리", desc: "길이부터 용량까지 일상과 업무에서 자주 쓰는 모든 단위를 지원합니다." },
+          { title: "전체 단위 동시 표시", desc: "한 번 입력으로 관련된 모든 단위의 결과를 바로 확인할 수 있습니다." },
+          { title: "정밀한 계산", desc: "부동소수점 정밀 계산으로 소수점 이하도 정확하게 변환합니다." },
+          { title: "스왑 기능", desc: "버튼 하나로 변환 방향을 즉시 반전할 수 있습니다." },
+        ]}
+        faqs={[
+          { q: "평과 제곱미터 변환은?", a: "넓이 카테고리에서 평과 m²를 선택하면 됩니다. 1평 = 3.30579 m²입니다." },
+          { q: "화씨와 섭씨 변환은?", a: "온도 카테고리에서 °C와 °F를 선택하세요. 변환 공식: (°F - 32) × 5/9 = °C" },
+          { q: "국제 단위(SI)란?", a: "m, kg, L 등 국제 표준 단위계입니다. 과학·공학에서 공식적으로 사용합니다." },
+          { q: "인치와 센티미터 변환은?", a: "1인치 = 2.54cm입니다. 길이 카테고리에서 inch와 cm를 선택하세요." },
+        ]}
+        keywords="단위 변환기 · 길이 변환 · 무게 변환 · 온도 변환 · 넓이 변환 · 평 제곱미터 변환 · 인치 센티미터 · 섭씨 화씨 · unit converter · length converter · weight converter · temperature converter · metric converter"
+      />
     </div>
   )
 }

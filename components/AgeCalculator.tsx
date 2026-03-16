@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Copy, CheckCheck, RefreshCw } from 'lucide-react'
+import ToolFooter from './ToolFooter'
 
 const ZODIACS = ['쥐','소','호랑이','토끼','용','뱀','말','양','원숭이','닭','개','돼지']
 const ZODIAC_EN = ['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig']
@@ -197,12 +198,30 @@ export default function AgeCalculator() {
         </>
       )}
 
-      <div className="mt-10 p-5 rounded-xl border border-surface-border/30 bg-[#1a1d27]/50">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          나이 계산기 · 만 나이 계산기 · 한국 나이 계산 · 내 나이 계산 · 생일 계산기 · 띠 계산기 ·
-          태어난 날수 계산 · 만나이 계산 · age calculator · birthday calculator · how old am I
-        </p>
-      </div>
+      <ToolFooter
+        toolName="나이 계산기"
+        toolUrl="https://keyword-mixer.vercel.app/age-calculator"
+        description="만 나이·한국 나이·태어난 날수 즉시 계산. 띠·다음 생일 D-day·기념일까지 한번에."
+        howToUse={[
+          { step: '생년월일 입력', desc: '날짜 입력창에 생년월일을 입력하거나 선택하세요.' },
+          { step: '만 나이 확인', desc: '만 나이와 한국 나이를 동시에 확인할 수 있습니다.' },
+          { step: '추가 정보 확인', desc: '태어난 요일, 띠, 총 일수/시간/초 등 다양한 정보를 확인하세요.' },
+          { step: '결과 복사', desc: '결과 복사 버튼으로 모든 정보를 클립보드에 복사하세요.' },
+        ]}
+        whyUse={[
+          { title: '만 나이 법 시행', desc: '2023년부터 공식 만 나이를 사용합니다. 정확한 만 나이를 즉시 계산하세요.' },
+          { title: '한국 나이 동시 확인', desc: '관습적으로 사용하는 한국 나이와 만 나이를 한번에 비교할 수 있습니다.' },
+          { title: '생일 D-day', desc: '다음 생일까지 몇 일 남았는지 실시간으로 확인할 수 있습니다.' },
+          { title: '기념일 안내', desc: '100일, 1000일 등 태어난 날 기준 기념일을 자동으로 계산해드립니다.' },
+        ]}
+        faqs={[
+          { q: '만 나이와 한국 나이 차이가 뭔가요?', a: '만 나이는 생일이 지난 후 1살이 증가하는 국제 표준 나이입니다. 한국 나이(세는 나이)는 태어난 해를 1살로 시작해 매년 1월 1일에 1살씩 추가됩니다.' },
+          { q: '2023년 만 나이 통일법이란?', a: '2023년 6월부터 법적·사회적으로 만 나이를 공식 나이로 사용하게 되었습니다. 의료·행정 서류에서는 만 나이를 사용하세요.' },
+          { q: '띠는 어떻게 계산되나요?', a: '띠는 태어난 해의 12간지로 결정됩니다. 단, 음력 설(구정) 이전 출생자는 전년도 띠로 계산되는 경우도 있습니다.' },
+          { q: '태어난 날수는 어떻게 계산되나요?', a: '오늘 날짜에서 생년월일을 빼서 총 경과일수를 계산합니다. 윤년도 자동으로 반영됩니다.' },
+        ]}
+        keywords="나이 계산기 · 만 나이 계산기 · 한국 나이 계산 · 내 나이 계산 · 생일 계산기 · 띠 계산기 · 태어난 날수 · 만나이 통일 · age calculator · birthday calculator · how old am I · Korean age calculator"
+      />
     </div>
   )
 }

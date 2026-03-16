@@ -1,5 +1,6 @@
 'use client'
 
+import ToolFooter from './ToolFooter'
 import { useState, useCallback } from 'react'
 import { Copy, CheckCheck, RotateCcw, RefreshCw, Shield } from 'lucide-react'
 
@@ -190,13 +191,30 @@ export default function PasswordGenerator() {
       )}
 
       {/* SEO */}
-      <div className="mt-16 p-6 rounded-xl border border-surface-border/30 bg-surface-card/20">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          비밀번호 생성기 · 랜덤 비밀번호 · 안전한 비밀번호 만들기 · 강력한 비밀번호 생성 ·
-          비밀번호 추천 · password generator · random password · strong password generator ·
-          secure password · free password generator · online password maker
-        </p>
-      </div>
+      <ToolFooter
+        toolName="비밀번호 생성기"
+        toolUrl="https://keyword-mixer.vercel.app/password-generator"
+        description="안전한 랜덤 비밀번호 즉시 생성. 길이·문자 조합 맞춤 설정."
+        howToUse={[
+          { step: "길이 설정", desc: "슬라이더로 비밀번호 길이를 4~64자 사이에서 설정하세요." },
+          { step: "문자 유형 선택", desc: "대문자, 소문자, 숫자, 특수문자를 조합해 보안 강도를 높이세요." },
+          { step: "생성 버튼 클릭", desc: "비밀번호 생성 버튼을 눌러 랜덤 비밀번호를 받으세요." },
+          { step: "복사 및 사용", desc: "복사 버튼으로 클립보드에 복사한 후 안전한 곳에 저장하세요." },
+        ]}
+        whyUse={[
+          { title: "강력한 보안", desc: "예측 불가능한 랜덤 알고리즘으로 안전한 비밀번호를 생성합니다." },
+          { title: "서버 전송 없음", desc: "브라우저에서만 처리되어 생성된 비밀번호가 서버에 전송되지 않습니다." },
+          { title: "맞춤 설정", desc: "사이트별 비밀번호 정책에 맞게 문자 조합을 자유롭게 설정할 수 있습니다." },
+          { title: "다중 생성", desc: "여러 개를 동시에 생성해 중요도에 따라 선택할 수 있습니다." },
+        ]}
+        faqs={[
+          { q: "안전한 비밀번호 길이는?", a: "최소 12자 이상, 대소문자·숫자·특수문자를 모두 포함한 비밀번호를 권장합니다." },
+          { q: "생성된 비밀번호는 저장되나요?", a: "아니요. 브라우저에서만 처리되며 서버에 저장되지 않습니다." },
+          { q: "헷갈리는 문자 제외 기능은?", a: "I(아이), l(소문자L), 1(숫자), O(대문자오), 0(영)처럼 혼동되는 문자를 제외할 수 있습니다." },
+          { q: "비밀번호를 어디에 저장하나요?", a: "1Password, Bitwarden, 삼성패스 등 비밀번호 관리자 앱을 사용하는 것을 권장합니다." },
+        ]}
+        keywords="비밀번호 생성기 · 랜덤 비밀번호 · 안전한 비밀번호 · 강력한 비밀번호 만들기 · 비밀번호 추천 · password generator · random password · strong password generator · secure password · free password tool"
+      />
     </div>
   )
 }

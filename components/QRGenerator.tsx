@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import ToolFooter from './ToolFooter'
 import { Download, Copy, CheckCheck } from 'lucide-react'
 
 const QR_TYPES = [
@@ -197,14 +198,30 @@ export default function QRGenerator() {
         </div>
       </div>
 
-      {/* SEO */}
-      <div className="mt-10 p-6 rounded-xl border border-surface-border/30 bg-surface-card/20">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          QR코드 생성기 · QR코드 만들기 · 무료 QR코드 · QR코드 만들기 무료 · URL QR코드 · WiFi QR코드 ·
-          QR code generator · free QR code maker · QR code creator · custom QR code · QR code download ·
-          온라인 QR코드 생성 · QR코드 이미지 다운로드
-        </p>
-      </div>
+      <ToolFooter
+        toolName="QR코드 생성기"
+        toolUrl="https://keyword-mixer.vercel.app/qr-generator"
+        description="URL·텍스트·이메일·전화·WiFi QR코드 무료 생성. 색상 커스텀, 고해상도 PNG 다운로드."
+        howToUse={[
+          { step: 'QR코드 유형 선택', desc: 'URL, 텍스트, 이메일, 전화번호, SMS, WiFi 중 원하는 유형을 선택하세요.' },
+          { step: '내용 입력', desc: 'QR코드에 담을 내용을 입력하세요. WiFi는 SSID와 비밀번호를 입력합니다.' },
+          { step: '커스터마이징', desc: 'QR코드 크기(128~1024px)와 색상을 원하는 대로 설정하세요.' },
+          { step: 'PNG 다운로드', desc: '생성 버튼을 눌러 미리보기를 확인하고 고해상도 PNG로 다운로드하세요.' },
+        ]}
+        whyUse={[
+          { title: '완전 무료', desc: '로그인 없이 무제한으로 QR코드를 생성할 수 있습니다.' },
+          { title: '다양한 유형 지원', desc: 'URL뿐 아니라 WiFi, 전화번호, SMS 등 5가지 유형을 지원합니다.' },
+          { title: '고해상도 출력', desc: '최대 1024px 고해상도로 인쇄물에도 선명하게 사용할 수 있습니다.' },
+          { title: '색상 커스텀', desc: 'QR코드와 배경 색상을 자유롭게 설정해 브랜드에 맞게 활용하세요.' },
+        ]}
+        faqs={[
+          { q: 'QR코드는 얼마나 오래 사용할 수 있나요?', a: '생성된 QR코드는 영구적으로 사용 가능합니다. URL QR코드의 경우 해당 URL이 유효한 한 계속 작동합니다.' },
+          { q: 'WiFi QR코드는 어떻게 만드나요?', a: 'WiFi 유형 선택 후 SSID:네트워크이름,PWD:비밀번호 형식으로 입력하세요. 스마트폰으로 스캔하면 자동으로 WiFi에 연결됩니다.' },
+          { q: '생성된 QR코드를 상업적으로 사용해도 되나요?', a: '네, 상업적 목적으로도 자유롭게 사용하실 수 있습니다.' },
+          { q: 'QR코드 인식이 안 될 때는?', a: '배경과 QR코드 색상 대비를 높이거나, 크기를 256px 이상으로 설정해보세요.' },
+        ]}
+        keywords="QR코드 생성기 · QR코드 만들기 · 무료 QR코드 · URL QR코드 · WiFi QR코드 · QR code generator · free QR code maker · QR code creator · custom QR code · QR code download · 온라인 QR코드 생성 · QR code generator free · make QR code online"
+      />
     </div>
   )
 }

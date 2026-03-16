@@ -1,5 +1,6 @@
 'use client'
 
+import ToolFooter from './ToolFooter'
 import { useState } from 'react'
 
 type Tab = 'loan' | 'bmi' | 'calorie' | 'tax'
@@ -302,12 +303,30 @@ export default function Calculators() {
         {tab === 'tax' && <TaxCalc />}
       </div>
 
-      <div className="mt-10 p-5 rounded-xl border border-surface-border/30 bg-[#1a1d27]/50">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          대출 계산기 · 월상환금 계산 · BMI 계산기 · 체질량지수 · 칼로리 계산기 · 기초대사량 · 소득세 계산기 ·
-          loan calculator · BMI calculator · calorie calculator · tax calculator · 세금 계산
-        </p>
-      </div>
+      <ToolFooter
+        toolName="계산기 모음"
+        toolUrl="https://keyword-mixer.vercel.app/calculators"
+        description="대출 월상환금·BMI·칼로리·소득세 계산기. 슬라이더로 즉시 계산."
+        howToUse={[
+          { step: '계산기 유형 선택', desc: '상단 탭에서 대출, BMI, 칼로리, 세금 계산기 중 원하는 것을 선택하세요.' },
+          { step: '슬라이더 조절', desc: '각 수치를 슬라이더로 조절하면 결과가 실시간으로 업데이트됩니다.' },
+          { step: '결과 확인', desc: '월 상환금, BMI 수치, 일일 권장칼로리, 세후 소득 등을 확인하세요.' },
+          { step: '다른 계산기 활용', desc: '탭을 전환해 여러 계산기를 차례로 활용할 수 있습니다.' },
+        ]}
+        whyUse={[
+          { title: '4가지 계산기 통합', desc: '자주 필요한 대출·BMI·칼로리·세금 계산기를 한 페이지에서 모두 사용하세요.' },
+          { title: '슬라이더 방식', desc: '숫자를 직접 입력하지 않아도 슬라이더로 직관적으로 조절할 수 있습니다.' },
+          { title: '실시간 계산', desc: '슬라이더를 움직이는 즉시 결과가 업데이트되어 빠른 비교가 가능합니다.' },
+          { title: '한국형 세금 계산', desc: '한국 소득세율 구간을 반영한 정확한 세금 계산을 제공합니다.' },
+        ]}
+        faqs={[
+          { q: '대출 계산기는 어떤 방식으로 계산하나요?', a: '원리금 균등상환 방식으로 계산합니다. 실제 대출 조건(우대금리, 중도상환수수료 등)에 따라 다를 수 있으니 참고용으로만 사용하세요.' },
+          { q: 'BMI 정상 범위는?', a: '한국 기준으로 BMI 18.5~22.9가 정상 범위입니다. 23~24.9는 과체중, 25 이상은 비만으로 분류됩니다.' },
+          { q: '칼로리 계산 공식은?', a: 'Mifflin-St Jeor 방정식을 사용합니다. 기초대사량(BMR)에 활동 수준을 곱해 일일 권장칼로리(TDEE)를 계산합니다.' },
+          { q: '세금 계산기는 얼마나 정확한가요?', a: '기본공제만 적용한 개략적인 계산입니다. 정확한 세금 신고는 국세청 홈택스나 세무사를 이용하세요.' },
+        ]}
+        keywords="대출 계산기 · 월상환금 · BMI 계산기 · 체질량지수 · 칼로리 계산기 · 기초대사량 · 소득세 계산기 · 세금 계산 · loan calculator · BMI calculator · calorie calculator · tax calculator Korea · TDEE calculator"
+      />
     </div>
   )
 }

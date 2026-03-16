@@ -1,5 +1,6 @@
 'use client'
 
+import ToolFooter from './ToolFooter'
 import { useState } from 'react'
 import { RefreshCw, Copy, CheckCheck, Star } from 'lucide-react'
 
@@ -200,12 +201,30 @@ export default function LottoGenerator() {
         </div>
       )}
 
-      <div className="mt-10 p-5 rounded-xl border border-surface-border/30 bg-[#1a1d27]/50">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          로또 번호 생성기 · 로또 번호 추천 · 로또 자동 번호 · 행운의 번호 생성 · 로또 당첨 번호 ·
-          lotto number generator · random lotto numbers · lucky number generator · 로또 6/45
-        </p>
-      </div>
+      <ToolFooter
+        toolName="로또 번호 생성기"
+        toolUrl="https://keyword-mixer.vercel.app/lotto"
+        description="랜덤 로또 번호 자동 생성. 제외 번호·포함 번호 설정, 최대 10게임 동시 생성."
+        howToUse={[
+          { step: '게임 수 설정', desc: '1~10게임 중 원하는 게임 수를 선택하세요.' },
+          { step: '포함/제외 번호 설정 (선택)', desc: '꼭 포함하거나 제외할 번호가 있으면 입력하세요. 최대 5개까지 포함 가능합니다.' },
+          { step: '번호 생성', desc: '생성하기 버튼을 눌러 랜덤 로또 번호를 받으세요.' },
+          { step: '번호 복사', desc: '전체 복사 버튼으로 모든 게임 번호를 한번에 복사할 수 있습니다.' },
+        ]}
+        whyUse={[
+          { title: '완전 랜덤 생성', desc: '순수 랜덤 알고리즘으로 편향 없이 공정하게 번호를 생성합니다.' },
+          { title: '번호 제외 기능', desc: '최근에 자주 나온 번호나 원하지 않는 번호를 제외하고 생성할 수 있습니다.' },
+          { title: '10게임 동시 생성', desc: '여러 게임을 한번에 생성해 시간을 절약하세요.' },
+          { title: '번호 색상 표시', desc: '실제 로또와 동일한 색상으로 번호를 표시해 직관적으로 확인할 수 있습니다.' },
+        ]}
+        faqs={[
+          { q: '로또 번호는 진짜 랜덤인가요?', a: 'JavaScript의 Math.random()을 기반으로 생성됩니다. 완전한 랜덤이지만 당첨을 보장하지는 않습니다.' },
+          { q: '포함 번호는 몇 개까지 설정할 수 있나요?', a: '최대 5개까지 설정 가능합니다. 6개를 모두 지정하면 나머지 1개를 랜덤으로 채울 수 없어 5개로 제한됩니다.' },
+          { q: '로또 1등 확률은?', a: '로또 6/45의 1등 당첨 확률은 약 1/8,145,060 (814만분의 1)입니다.' },
+          { q: '보너스 번호는 어떻게 사용하나요?', a: '보너스 번호는 2등 당첨(5개 일치 + 보너스) 확인에 사용됩니다. 당첨 번호와 함께 확인하세요.' },
+        ]}
+        keywords="로또 번호 생성기 · 로또 번호 추천 · 로또 자동 번호 · 행운의 번호 · 로또 당첨 번호 · 로또 6/45 · lotto number generator · random lotto numbers · lucky number generator · lottery number picker"
+      />
     </div>
   )
 }

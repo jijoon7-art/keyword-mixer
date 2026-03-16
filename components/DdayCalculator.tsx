@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Plus, Trash2, Copy, CheckCheck } from 'lucide-react'
+import ToolFooter from './ToolFooter'
 
 interface DdayItem {
   id: string
@@ -219,12 +220,30 @@ export default function DdayCalculator() {
         {dateDiff.diff < 0 && <p className="text-xs text-slate-500 mt-2 text-center">※ 종료일이 시작일보다 이전입니다</p>}
       </div>
 
-      <div className="mt-10 p-5 rounded-xl border border-surface-border/30 bg-[#1a1d27]/50">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          디데이 계산기 · D-day 계산기 · 날짜 계산기 · 디데이 · 수능 디데이 · 생일 디데이 · 날짜 차이 계산 ·
-          d-day calculator · days until · date difference calculator · countdown timer
-        </p>
-      </div>
+      <ToolFooter
+        toolName="D-day 계산기"
+        toolUrl="https://keyword-mixer.vercel.app/dday-calculator"
+        description="중요한 날까지 남은 날수 계산. 여러 D-day 동시 관리, 두 날짜 사이 계산 지원."
+        howToUse={[
+          { step: '날짜 입력', desc: '목표 날짜를 입력하고 이름을 설정하세요. 수능, 생일, 기념일 등 이름을 자유롭게 설정할 수 있습니다.' },
+          { step: '유형 선택', desc: '"날짜까지" 또는 "날짜부터"를 선택해 D-day 방향을 설정하세요.' },
+          { step: '색상 설정', desc: '여러 D-day를 색상으로 구분해 한눈에 파악하세요.' },
+          { step: 'D-day 추가', desc: '하단 추가 버튼으로 여러 D-day를 동시에 관리할 수 있습니다.' },
+        ]}
+        whyUse={[
+          { title: '여러 D-day 동시 관리', desc: '수능, 생일, 여행, 시험 등 여러 중요한 날을 한 화면에서 관리하세요.' },
+          { title: '실시간 현재 시간 표시', desc: '현재 시간이 실시간으로 표시되어 정확한 날짜 파악이 가능합니다.' },
+          { title: '두 날짜 사이 계산', desc: '두 날짜 사이의 일수를 연·월·일 단위로 세분화해 계산합니다.' },
+          { title: '색상 구분', desc: '6가지 색상으로 D-day를 시각적으로 구분해 중요도에 따라 정리할 수 있습니다.' },
+        ]}
+        faqs={[
+          { q: 'D-day가 지났을 때는 어떻게 표시되나요?', a: '날짜가 지나면 D+숫자로 표시됩니다. 예: 결혼기념일이 3일 지났으면 D+3으로 표시됩니다.' },
+          { q: '수능 D-day는 어떻게 설정하나요?', a: '빠른 추가 버튼에서 수능을 클릭하면 자동으로 설정됩니다. 날짜는 매년 11월 두 번째 목요일 기준입니다.' },
+          { q: '두 날짜 사이 계산은 어디서 하나요?', a: '페이지 하단 "두 날짜 사이 계산" 섹션에서 시작일과 종료일을 입력하면 자동으로 계산됩니다.' },
+          { q: '설정한 D-day는 저장되나요?', a: '현재는 페이지를 새로고침하면 초기화됩니다. 브라우저 북마크로 저장해두고 활용하세요.' },
+        ]}
+        keywords="디데이 계산기 · D-day 계산기 · 날짜 계산기 · 수능 디데이 · 생일 디데이 · 날짜 차이 계산 · d-day calculator · days until · date countdown · date difference calculator · days between dates"
+      />
     </div>
   )
 }

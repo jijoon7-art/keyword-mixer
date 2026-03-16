@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { RefreshCw, ArrowLeftRight, Copy, CheckCheck } from 'lucide-react'
+import ToolFooter from './ToolFooter'
 
 const CURRENCIES = [
   { code: 'KRW', name: '한국 원', flag: '🇰🇷', symbol: '₩' },
@@ -173,12 +174,30 @@ export default function ExchangeRate() {
         </div>
       )}
 
-      <div className="mt-10 p-5 rounded-xl border border-surface-border/30 bg-[#1a1d27]/50">
-        <p className="text-xs text-slate-500 leading-relaxed">
-          환율 계산기 · 달러 환율 · 엔 환율 · 유로 환율 · 위안 환율 · 실시간 환율 · 오늘 환율 · 환전 계산기 ·
-          exchange rate calculator · currency converter · USD KRW · JPY KRW · EUR KRW · 환율 조회
-        </p>
-      </div>
+      <ToolFooter
+        toolName="환율 계산기"
+        toolUrl="https://keyword-mixer.vercel.app/exchange-rate"
+        description="실시간 환율로 15개 주요 통화 즉시 변환. 달러·엔·유로·위안 환율 한눈에 확인."
+        howToUse={[
+          { step: '금액과 통화 선택', desc: '변환할 금액을 입력하고 원본 통화를 선택하세요.' },
+          { step: '목표 통화 선택', desc: '변환하고 싶은 통화를 우측에서 선택하세요.' },
+          { step: '실시간 결과 확인', desc: '현재 환율 기준으로 즉시 변환된 금액을 확인할 수 있습니다.' },
+          { step: '환율표 활용', desc: '하단 환율표에서 주요 15개 통화의 환율을 한눈에 비교하세요.' },
+        ]}
+        whyUse={[
+          { title: '실시간 환율 적용', desc: '최신 환율 데이터를 API로 불러와 정확한 환율을 제공합니다.' },
+          { title: '15개 통화 지원', desc: '달러, 엔, 유로, 위안 등 여행·무역에서 자주 쓰는 15개 주요 통화를 지원합니다.' },
+          { title: '환율표 제공', desc: '1외화 대비 원화 환율표를 한눈에 볼 수 있어 환전 계획 수립에 유용합니다.' },
+          { title: '빠른 스왑', desc: '통화 스왑 버튼으로 방향을 즉시 전환할 수 있습니다.' },
+        ]}
+        faqs={[
+          { q: '환율은 얼마나 자주 업데이트되나요?', a: '페이지를 방문하거나 새로고침 버튼을 누를 때마다 최신 환율을 불러옵니다. 환율은 금융시장 상황에 따라 수시로 변동됩니다.' },
+          { q: '실제 환전 시 환율과 다른 이유는?', a: '은행 환전 시에는 환전 수수료와 스프레드가 적용되어 실제 환전 금액은 다를 수 있습니다. 이 도구는 참고용 중간 환율을 제공합니다.' },
+          { q: '베트남 동(VND)은 왜 숫자가 크나요?', a: '베트남 동은 단위가 작아 1달러가 약 25,000동에 해당합니다. 숫자가 크게 보이는 것이 정상입니다.' },
+          { q: '환율 데이터를 신뢰할 수 있나요?', a: 'ExchangeRate-API의 공개 데이터를 사용합니다. 정확한 환전은 은행이나 공인 환전소를 이용하세요.' },
+        ]}
+        keywords="환율 계산기 · 달러 환율 · 엔 환율 · 유로 환율 · 위안 환율 · 실시간 환율 · 오늘 환율 · 환전 계산기 · exchange rate calculator · currency converter · USD KRW · JPY KRW · EUR KRW · dollar to won · yen to won"
+      />
     </div>
   )
 }
