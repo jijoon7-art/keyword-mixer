@@ -113,7 +113,7 @@ export default function CharCounter() {
         <div className="flex items-center gap-2 mb-3">
           <Scissors size={14} className="text-brand-400" />
           <span className="text-sm font-semibold text-slate-200">글자수 줄이기</span>
-          <span className="text-xs text-slate-400">— 버튼을 누르면 텍스트에 즉시 적용됩니다</span>
+          <span className="text-xs text-slate-600">— 버튼을 누르면 텍스트에 즉시 적용됩니다</span>
         </div>
         <div className="flex flex-wrap gap-2">
           {TRIM_ACTIONS.map((action) => (
