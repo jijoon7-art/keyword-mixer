@@ -143,11 +143,11 @@ export default function KeywordMixer() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="border-b border-surface-border/50 sticky top-0 z-50 backdrop-blur-md bg-surface-DEFAULT/80">
+      <header className="border-b border-surface-border sticky top-0 z-50 bg-surface-card">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center shadow-[0_0_12px_rgba(34,197,94,0.4)]">
-              <Shuffle size={16} className="text-black" />
+              <Shuffle size={16} className="text-white" />
             </div>
             <span className="font-display font-bold text-white text-lg tracking-tight">
               Keyword<span className="text-brand-400">Mixer</span>
@@ -553,7 +553,7 @@ export default function KeywordMixer() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-surface-border/50 py-8 mt-10">
+      <footer className="border-t border-surface-border py-8 mt-10">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="text-slate-600 text-sm">
             © {new Date().getFullYear()} <span className="text-brand-500">Keyword</span>Mixer — {T.madeWith}
