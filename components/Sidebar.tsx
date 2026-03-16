@@ -6,8 +6,7 @@ import {
   Shuffle, Type, Youtube, Link2, Hash, Menu, X,
   FileJson, Lock, Palette, Binary, Ruler, QrCode,
   ImageDown, FileText, Clock, GitCompare, FilePlus,
-  ImageIcon, Ticket, Smile, AlignLeft, Calculator,
-  Gradient, Regex
+  ImageIcon, Ticket, Smile, AlignLeft, Calculator
 } from 'lucide-react'
 import { useState } from 'react'
 
