@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
+import { LangProvider } from '@/components/LangContext'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://keyword-mixer.vercel.app'),
@@ -80,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-1R84NXCBFE" />
         <script dangerouslySetInnerHTML={{ __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "G-1R84NXCBFE");`}} />
       </head>
-      <body className="mesh-bg noise min-h-screen">
+      <body className="mesh-bg noise min-h-screen"><LangProvider>
         <Header />
         <div className="flex">
           <Sidebar />
@@ -88,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
         </div>
-      </body>
+      </LangProvider></body>
     </html>
   )
 }

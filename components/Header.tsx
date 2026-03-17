@@ -1,6 +1,7 @@
 'use client'
 
 import { Shuffle, Search, X } from 'lucide-react'
+import { useLang } from './LangContext'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState, useMemo } from 'react'
@@ -99,8 +100,27 @@ export default function Header() {
           )}
         </div>
 
-        <span className="text-slate-700 text-xs hidden md:block flex-shrink-0 ml-auto">28개 무료 도구</span>
+        <div className="flex items-center gap-2 flex-shrink-0 ml-auto">
+          <span className="text-slate-700 text-xs hidden md:block">35개 무료 도구</span>
+          <LangToggle />
+        </div>
       </div>
     </header>
+  )
+}
+
+function LangToggle() {
+  const { lang, setLang } = useLang()
+  return (
+    <div className="flex rounded-lg border border-surface-border overflow-hidden">
+      <button
+        onClick={() => setLang('ko')}
+        className={`px-2.5 py-1 text-xs font-bold transition-all ${lang === 'ko' ? 'bg-brand-500 text-white' : 'text-slate-400 hover:text-slate-200'}`}
+      >KO</button>
+      <button
+        onClick={() => setLang('en')}
+        className={`px-2.5 py-1 text-xs font-bold transition-all ${lang === 'en' ? 'bg-brand-500 text-white' : 'text-slate-400 hover:text-slate-200'}`}
+      >EN</button>
+    </div>
   )
 }

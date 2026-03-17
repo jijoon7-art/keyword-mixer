@@ -7,7 +7,8 @@ import {
   FileJson, Lock, Palette, Binary, Ruler, QrCode,
   ImageDown, FileText, Clock, GitCompare, FilePlus,
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
-  Baby, Calendar, DollarSign, Timer
+  Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
+  Globe, Keyboard, Wifi, Wand2
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -23,16 +24,25 @@ const MENU = [
     ],
   },
   {
-    category: '텍스트/계산 도구',
+    category: '계산/생활 도구',
     items: [
-      { href: '/text-tools', label: '텍스트 도구 모음', icon: AlignLeft },
       { href: '/calculators', label: '계산기 모음', icon: Calculator },
       { href: '/age-calculator', label: '나이 계산기', icon: Baby },
       { href: '/dday-calculator', label: 'D-day 계산기', icon: Calendar },
       { href: '/exchange-rate', label: '환율 계산기', icon: DollarSign },
+      { href: '/pyeongsu-calculator', label: '평수 계산기', icon: Home },
+      { href: '/interest-calculator', label: '이자 계산기', icon: TrendingUp },
       { href: '/lotto', label: '로또 번호 생성기', icon: Ticket },
-      { href: '/timer', label: '타이머 / 스톱워치', icon: Timer },
+    ],
+  },
+  {
+    category: '텍스트 도구',
+    items: [
+      { href: '/text-tools', label: '텍스트 도구 모음', icon: AlignLeft },
+      { href: '/text-diff', label: '텍스트 비교기', icon: GitCompare },
+      { href: '/typing-speed', label: '타이핑 속도 측정', icon: Keyboard },
       { href: '/emoji-search', label: '이모지 검색기', icon: Smile },
+      { href: '/ascii-art', label: 'ASCII 아트 생성기', icon: Wand2 },
     ],
   },
   {
@@ -49,10 +59,11 @@ const MENU = [
       { href: '/json-formatter', label: 'JSON 포맷터', icon: FileJson },
       { href: '/json-csv', label: 'JSON ↔ CSV 변환기', icon: FileJson },
       { href: '/base64', label: 'Base64 인코더/디코더', icon: Binary },
+      { href: '/url-encoder', label: 'URL 인코더/디코더', icon: Globe },
       { href: '/markdown-editor', label: '마크다운 에디터', icon: FileText },
-      { href: '/text-diff', label: '텍스트 비교기', icon: GitCompare },
       { href: '/css-gradient', label: 'CSS 그라디언트', icon: Palette },
       { href: '/regex-tester', label: '정규식 테스터', icon: FileJson },
+      { href: '/ip-lookup', label: 'IP 주소 조회', icon: Wifi },
     ],
   },
   {
@@ -60,8 +71,10 @@ const MENU = [
     items: [
       { href: '/unit-converter', label: '단위 변환기', icon: Ruler },
       { href: '/timezone-converter', label: '타임존 변환기', icon: Clock },
+      { href: '/timer', label: '타이머 / 스톱워치', icon: Timer },
       { href: '/password-generator', label: '비밀번호 생성기', icon: Lock },
       { href: '/qr-generator', label: 'QR코드 생성기', icon: QrCode },
+      { href: '/color-palette', label: '색상 팔레트 생성기', icon: Palette },
       { href: '/color-converter', label: '색상 코드 변환기', icon: Palette },
     ],
   },
