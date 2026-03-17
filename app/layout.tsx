@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Header from '@/components/Header'
-import Sidebar from '@/components/Sidebar'
+import LayoutShell from '@/components/LayoutShell'
 import { LangProvider } from '@/components/LangContext'
 
 export const metadata: Metadata = {
@@ -82,13 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "G-1R84NXCBFE");`}} />
       </head>
       <body className="mesh-bg noise min-h-screen"><LangProvider>
-        <Header />
-        <div className="flex">
-          <Sidebar />
-          <main className="flex-1 lg:ml-52 min-h-[calc(100vh-44px)]">
-            {children}
-          </main>
-        </div>
+        <LayoutShell>{children}</LayoutShell>
       </LangProvider></body>
     </html>
   )

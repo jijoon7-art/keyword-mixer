@@ -97,9 +97,9 @@ export default function TextDiff() {
           <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" />
           Free Tool
         </div>
-        <h1 className="text-4xl font-extrabold text-white mb-3 tracking-tight">텍스트 비교기</h1>
+        <h1 className="text-4xl font-extrabold text-white mb-3 tracking-tight">텍스트 비교기 (DIFF)</h1>
         <p className="text-slate-300 text-base max-w-lg mx-auto">
-          두 텍스트의 차이점을 한눈에 비교. 추가·삭제·동일 줄을 색상으로 구분, diff 결과 복사·저장.
+          두 텍스트의 차이점(DIFF)을 한눈에 비교. 추가·삭제·동일 줄을 색상으로 구분. diff 결과 복사·저장.
         </p>
       </div>
 

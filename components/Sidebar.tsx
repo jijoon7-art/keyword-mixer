@@ -3,14 +3,13 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  Shuffle, Type, Youtube, Link2, Hash, Menu, X,
+  Shuffle, Type, Youtube, Link2, Hash, X,
   FileJson, Lock, Palette, Binary, Ruler, QrCode,
   ImageDown, FileText, Clock, GitCompare, FilePlus,
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
   Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
-  Globe, Keyboard, Wifi, Wand2
+  Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode
 } from 'lucide-react'
-import { useState } from 'react'
 
 const MENU = [
   {
@@ -33,16 +32,20 @@ const MENU = [
       { href: '/pyeongsu-calculator', label: '평수 계산기', icon: Home },
       { href: '/interest-calculator', label: '이자 계산기', icon: TrendingUp },
       { href: '/lotto', label: '로또 번호 생성기', icon: Ticket },
+      { href: '/id-generator', label: '주민번호 생성기(테스트)', icon: CreditCard },
     ],
   },
   {
     category: '텍스트 도구',
     items: [
       { href: '/text-tools', label: '텍스트 도구 모음', icon: AlignLeft },
-      { href: '/text-diff', label: '텍스트 비교기', icon: GitCompare },
+      { href: '/line-break-remover', label: '줄바꿈 제거기', icon: AlignLeft },
+      { href: '/text-diff', label: '텍스트 비교기 (DIFF)', icon: GitCompare },
       { href: '/typing-speed', label: '타이핑 속도 측정', icon: Keyboard },
       { href: '/emoji-search', label: '이모지 검색기', icon: Smile },
       { href: '/ascii-art', label: 'ASCII 아트 생성기', icon: Wand2 },
+      { href: '/hanja-converter', label: '한자 변환기', icon: FileText },
+      { href: '/spell-checker', label: '맞춤법 검사기', icon: FileText },
     ],
   },
   {
@@ -62,8 +65,12 @@ const MENU = [
       { href: '/url-encoder', label: 'URL 인코더/디코더', icon: Globe },
       { href: '/markdown-editor', label: '마크다운 에디터', icon: FileText },
       { href: '/css-gradient', label: 'CSS 그라디언트', icon: Palette },
-      { href: '/regex-tester', label: '정규식 테스터', icon: FileJson },
+      { href: '/regex-tester', label: '정규식 테스터', icon: FileCode },
       { href: '/ip-lookup', label: 'IP 주소 조회', icon: Wifi },
+      { href: '/meta-tag-generator', label: 'SEO 메타태그 생성기', icon: FileText },
+      { href: '/jwt-decoder', label: 'JWT 디코더', icon: FileJson },
+      { href: '/cron-generator', label: 'Cron 생성기', icon: Clock },
+      { href: '/number-converter', label: '진법 변환기', icon: Binary },
     ],
   },
   {
@@ -76,29 +83,38 @@ const MENU = [
       { href: '/qr-generator', label: 'QR코드 생성기', icon: QrCode },
       { href: '/color-palette', label: '색상 팔레트 생성기', icon: Palette },
       { href: '/color-converter', label: '색상 코드 변환기', icon: Palette },
+      { href: '/color-contrast', label: '색상 대비 검사기', icon: Palette },
     ],
   },
 ]
 
-export default function Sidebar() {
+interface SidebarProps {
+  open: boolean
+  onClose: () => void
+}
+
+export default function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname()
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
     <>
-      <button
-        onClick={() => setMobileOpen(!mobileOpen)}
-        className="lg:hidden fixed top-0 left-0 z-50 w-11 h-11 flex items-center justify-center text-slate-300 hover:text-brand-400 transition-all"
-      >
-        {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-      </button>
-
-      {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black/60 z-40" onClick={() => setMobileOpen(false)} />
+      {/* 모바일 오버레이 */}
+      {open && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black/60 z-40"
+          onClick={onClose}
+        />
       )}
 
+      {/* 사이드바 본체 */}
       <aside
-        className={`fixed top-11 left-0 h-[calc(100vh-44px)] w-52 border-r border-surface-border z-40 transition-transform duration-300 flex flex-col ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
+        className={`
+          fixed top-11 left-0 h-[calc(100vh-44px)] w-52
+          border-r border-surface-border z-40
+          transition-transform duration-300 ease-in-out
+          flex flex-col
+          ${open ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}
         style={{ backgroundColor: '#1a1d27' }}
       >
         <nav className="flex-1 overflow-y-auto p-2">
@@ -114,8 +130,15 @@ export default function Sidebar() {
                     const active = pathname === item.href
                     return (
                       <li key={item.href}>
-                        <Link href={item.href} onClick={() => setMobileOpen(false)}
-                          className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-all ${active ? 'bg-brand-500/15 border border-brand-500/30 text-brand-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-surface-hover'}`}>
+                        <Link
+                          href={item.href}
+                          onClick={onClose}
+                          className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-all ${
+                            active
+                              ? 'bg-brand-500/15 border border-brand-500/30 text-brand-400 font-semibold'
+                              : 'text-slate-300 hover:text-white hover:bg-surface-hover'
+                          }`}
+                        >
                           <Icon size={12} className={active ? 'text-brand-400' : 'text-slate-500'} />
                           {item.label}
                         </Link>
@@ -128,6 +151,12 @@ export default function Sidebar() {
           </div>
         </nav>
       </aside>
+
+      {/* 호버 감지 영역 — 왼쪽 끝에 마우스 오면 사이드바 열림 (데스크톱) */}
+      <div
+        className="hidden lg:block fixed top-11 left-0 w-2 h-[calc(100vh-44px)] z-30"
+        onMouseEnter={() => {/* sidebar is always visible on lg */}}
+      />
     </>
   )
 }

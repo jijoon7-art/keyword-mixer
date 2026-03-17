@@ -4,13 +4,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const tools = [
     'char-counter','youtube-tags','hashtag-generator','utm-builder',
     'calculators','age-calculator','dday-calculator','exchange-rate',
-    'pyeongsu-calculator','interest-calculator','lotto',
+    'pyeongsu-calculator','interest-calculator','lotto','id-generator',
     'text-tools','text-diff','typing-speed','emoji-search','ascii-art',
+    'hanja-converter','spell-checker','line-break-remover',
     'image-compressor','image-editor','pdf-tools',
     'json-formatter','json-csv','base64','url-encoder',
     'markdown-editor','css-gradient','regex-tester','ip-lookup',
+    'meta-tag-generator','jwt-decoder','cron-generator',
+    'number-converter',
     'unit-converter','timezone-converter','timer',
-    'password-generator','qr-generator','color-palette','color-converter',
+    'password-generator','qr-generator','color-palette','color-converter','color-contrast',
   ]
   return [
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
