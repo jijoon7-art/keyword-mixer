@@ -59,7 +59,7 @@ function getType(value: unknown, optional: boolean, readonly: boolean, sem: stri
   if (value === null) return 'null'
   if (Array.isArray(value)) {
     if (value.length === 0) return 'unknown[]'
-    const types = [...new Set(value.map(v => getType(v, optional, readonly, sem)))]
+    const types = Array.from(new Set(value.map(v => getType(v, optional, readonly, sem))))
     return types.length === 1 ? `${types[0]}[]` : `(${types.join(' | ')})[]`
   }
   if (typeof value === 'object') return 'object' // handled separately
@@ -109,7 +109,7 @@ export default function JsonToTypescript() {
       }
       const interfaces = new Map<string, string>()
       generateInterface(parsed, rootName, optional, readonly, semi, interfaces)
-      return [...interfaces.values()].reverse().join('\n\n')
+      return Array.from(interfaces.values()).reverse().join('\n\n')
     } catch (e) {
       return `// ${lang === 'ko' ? 'JSON 파싱 오류: ' : 'JSON parse error: '}${(e as Error).message}`
     }
