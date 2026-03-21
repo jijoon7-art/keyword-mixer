@@ -11,16 +11,16 @@ import { downloadExcel, downloadCSV, downloadTXT } from '@/lib/exportExcel'
 import { t, type Lang } from '@/lib/i18n'
 
 const SEPARATORS = [
-  { value: ' ', label: '공백 ( )' },
   { value: '',  label: '없음' },
+  { value: ' ', label: '공백 ( )' },
   { value: ',', label: '쉼표 (,)' },
   { value: '_', label: '언더스코어 (_)' },
   { value: '-', label: '하이픈 (-)' },
 ] as const
 
 const SEPARATORS_EN = [
-  { value: ' ', label: 'Space ( )' },
   { value: '',  label: 'None' },
+  { value: ' ', label: 'Space ( )' },
   { value: ',', label: 'Comma (,)' },
   { value: '_', label: 'Underscore (_)' },
   { value: '-', label: 'Dash (-)' },
@@ -43,7 +43,9 @@ export default function KeywordMixer() {
   const [groups, setGroups] = useState(DEFAULT_GROUPS)
   const [selectedPatterns, setSelectedPatterns] = useState<Set<string>>(new Set())
 
-  const [separator, setSeparator] = useState(' ')
+  const [separator, setSeparator] = useState('')
+  const [prefix, setPrefix] = useState('')
+  const [customPrefix, setCustomPrefix] = useState('')
   const [dedup, setDedup] = useState(true)
   const [caseMode, setCaseMode] = useState<'none' | 'lower' | 'upper'>('none')
 
@@ -111,19 +113,21 @@ export default function KeywordMixer() {
 
     let combined = combineKeywords(groupDataForCombine, patterns, {
       separator,
+      prefix,
       deduplicate: dedup,
       lowercase: caseMode === 'lower',
       trim: true,
     })
 
     if (caseMode === 'upper') combined = combined.map((k) => k.toUpperCase())
-
+    // prefix 적용
+    if (prefix) combined = combined.map((k) => prefix + k)
     setResult(combined)
     setCombining(false)
     setTimeout(() => {
       resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 100)
-  }, [selectedPatterns, groups, separator, dedup, caseMode, allPatterns, groupDataForCombine])
+  }, [selectedPatterns, groups, separator, prefix, customPrefix, dedup, caseMode, allPatterns, groupDataForCombine])
 
   const copyAll = async () => {
     await navigator.clipboard.writeText(result.join('\n'))
@@ -382,20 +386,70 @@ export default function KeywordMixer() {
               </div>
             </div>
 
+            {/* 앞에 특정문자 넣기 */}
+            <div>
+              <p className="text-xs text-slate-500 mb-2.5 font-medium">
+                {lang === 'ko' ? '앞에 특정문자 넣기' : 'Add Prefix'}
+              </p>
+              <div className="flex flex-wrap gap-1.5 mb-2">
+                {([
+                  { val: '',            label: lang === 'ko' ? '없음'       : 'None',      mono: false },
+                  { val: '#',           label: '# 해시태그',                               mono: true  },
+                  { val: ',',           label: ', 쉼표',                                   mono: true  },
+                  { val: ' ',           label: lang === 'ko' ? "' ' 공백"   : "' ' Space", mono: true  },
+                  { val: '__custom__',  label: lang === 'ko' ? '직접입력'   : 'Custom',    mono: false },
+                ] as const).map((opt) => (
+                  <button
+                    key={opt.val}
+                    onClick={() => {
+                      setPrefix(opt.val)
+                      if (opt.val !== '__custom__') setCustomPrefix('')
+                    }}
+                    className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${opt.mono ? 'font-mono' : ''} ${
+                      prefix === opt.val
+                        ? 'bg-brand-500 border-brand-500 text-white font-bold'
+                        : 'bg-surface-DEFAULT border-surface-border text-slate-400 hover:border-brand-500/40 hover:text-brand-300'
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+              {/* 직접 입력 필드 - "직접입력" 선택 시 표시 */}
+              {prefix === '__custom__' && (
+                <input
+                  value={customPrefix}
+                  onChange={e => setCustomPrefix(e.target.value)}
+                  placeholder={lang === 'ko' ? '앞에 붙일 문자를 입력하세요...' : 'Enter prefix character...'}
+                  maxLength={20}
+                  autoFocus
+                  className="w-full bg-[#0f1117] border border-brand-500/50 rounded-lg px-3 py-2 text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-500 transition-all font-mono mt-1"
+                />
+              )}
+              {/* 미리보기 */}
+              {(prefix && prefix !== '__custom__') || (prefix === '__custom__' && customPrefix) ? (
+                <p className="text-xs text-brand-400 mt-1.5 font-mono">
+                  {lang === 'ko' ? '미리보기: ' : 'Preview: '}
+                  <span className="text-white">{prefix === '__custom__' ? customPrefix : prefix}</span>
+                  <span className="text-slate-400">{lang === 'ko' ? '키워드' : 'keyword'}</span>
+                </p>
+              ) : null}
+            </div>
+
             {/* Combine Button */}
             <button
               onClick={handleCombine}
               disabled={combining || selectedPatterns.size === 0 || totalInput === 0}
-              className="mt-auto w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(34,197,94,0.3)] hover:shadow-[0_4px_28px_rgba(34,197,94,0.5)] active:scale-[0.98]"
+              className="mt-2 w-full py-4 rounded-xl bg-brand-500 hover:bg-brand-400 disabled:opacity-40 disabled:cursor-not-allowed font-extrabold text-base transition-all flex items-center justify-center gap-2 active:scale-[0.98] border-2 border-white text-white shadow-[0_0_0_3px_rgba(34,197,94,0.35),0_8px_32px_rgba(34,197,94,0.5)] hover:shadow-[0_0_0_4px_rgba(34,197,94,0.5),0_12px_40px_rgba(34,197,94,0.65)]"
             >
               {combining ? (
                 <>
-                  <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                  <span className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
                   {lang === 'ko' ? '조합 중...' : 'Combining...'}
                 </>
               ) : (
                 <>
-                  <Shuffle size={15} />
+                  <Shuffle size={18} />
                   {lang === 'ko' ? '키워드 조합하기' : 'Combine Keywords'}
                 </>
               )}
