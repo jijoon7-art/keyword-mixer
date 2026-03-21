@@ -9,6 +9,11 @@ const T = {
   en: { title: 'Cron Expression Generator', desc: 'Build and understand Cron expressions easily. Essential for scheduling automated tasks.' }
 }
 
+interface Preset {
+  label: (lang: string) => string;
+  cron: string;
+}
+
 const PRESETS = [
   { label: lang => lang==='ko'?'매분':'Every minute', cron: '* * * * *' },
   { label: lang => lang==='ko'?'매시 정각':'Every hour', cron: '0 * * * *' },
