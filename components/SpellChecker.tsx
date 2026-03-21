@@ -10,18 +10,18 @@ const T = {
 }
 
 const COMMON_ERRORS = [
-  { wrong: '되요', right: '돼요', rule: lang => lang==='ko'?'"되어요"의 준말은 "돼요"입니다.':'"돼요" is the correct contraction of "되어요"' },
-  { wrong: '데요', right: '대요', rule: lang => lang==='ko'?'"대요"는 남의 말을 전달할 때, "데요"는 경험을 말할 때':'"대요" for hearsay, "데요" for personal experience' },
-  { wrong: '않되', right: '안 돼', rule: lang => lang==='ko'?'"않"은 동사 뒤, "안"은 동사 앞에 사용':'"않" after verb, "안" before verb' },
-  { wrong: '함으로써', right: '함으로써 vs 함으로서', rule: lang => lang==='ko'?'"써"는 수단, "서"는 자격을 나타냄':'"써" means by means of, "서" means in the capacity of' },
-  { wrong: '왠지', right: '웬지', rule: lang => lang==='ko'?'"왠지"가 맞는 표현 ("왜인지"의 준말)':'"왠지" is correct (contraction of "왜인지")' },
-  { wrong: '어이없다', right: '어이없다', rule: lang => lang==='ko'?'"어이없다"가 표준어 ("어처구니없다"도 맞음)':'"어이없다" is the standard form' },
-  { wrong: '할께요', right: '할게요', rule: lang => lang==='ko'?'"ㄹ게요"는 된소리 없이 쓰는 것이 원칙':'"ㄹ게요" should not use tense consonants' },
-  { wrong: '잊어버리다', right: '잊어버리다', rule: lang => lang==='ko'?'"잊어버리다"가 맞는 표현':'"잊어버리다" is the correct form' },
-  { wrong: '맞추다 vs 맞히다', right: '구별 필요', rule: lang => lang==='ko'?'"맞추다"는 기준에 맞게 조정, "맞히다"는 정답을 알아냄':'"맞추다" to adjust to standard, "맞히다" to get the right answer' },
-  { wrong: '느즈막히', right: '느지막이', rule: lang => lang==='ko'?'"느지막이"가 표준어':'"느지막이" is the standard form' },
-  { wrong: '부딪히다', right: '부딪히다', rule: lang => lang==='ko'?'"부딪히다"(피동)와 "부딪치다"(능동)는 다른 표현':'"부딪히다" (passive) vs "부딪치다" (active) are different' },
-  { wrong: '어떻해', right: '어떻게 해', rule: lang => lang==='ko'?'"어떻해"는 없는 말, "어떻게 해" 또는 "어떡해"가 맞음':'"어떻해" doesn\'t exist; use "어떻게 해" or "어떡해"' },
+  { wrong: '되요', right: '돼요', rule: (lang: string) => lang ==='ko'?'"되어요"의 준말은 "돼요"입니다.':'"돼요" is the correct contraction of "되어요"' },
+  { wrong: '데요', right: '대요', rule: (lang: string) => lang ==='ko'?'"대요"는 남의 말을 전달할 때, "데요"는 경험을 말할 때':'"대요" for hearsay, "데요" for personal experience' },
+  { wrong: '않되', right: '안 돼', rule: (lang: string) => lang ==='ko'?'"않"은 동사 뒤, "안"은 동사 앞에 사용':'"않" after verb, "안" before verb' },
+  { wrong: '함으로써', right: '함으로써 vs 함으로서', rule: (lang: string) => lang ==='ko'?'"써"는 수단, "서"는 자격을 나타냄':'"써" means by means of, "서" means in the capacity of' },
+  { wrong: '왠지', right: '웬지', rule: (lang: string) => lang ==='ko'?'"왠지"가 맞는 표현 ("왜인지"의 준말)':'"왠지" is correct (contraction of "왜인지")' },
+  { wrong: '어이없다', right: '어이없다', rule: (lang: string) => lang ==='ko'?'"어이없다"가 표준어 ("어처구니없다"도 맞음)':'"어이없다" is the standard form' },
+  { wrong: '할께요', right: '할게요', rule: (lang: string) => lang ==='ko'?'"ㄹ게요"는 된소리 없이 쓰는 것이 원칙':'"ㄹ게요" should not use tense consonants' },
+  { wrong: '잊어버리다', right: '잊어버리다', rule: (lang: string) => lang ==='ko'?'"잊어버리다"가 맞는 표현':'"잊어버리다" is the correct form' },
+  { wrong: '맞추다 vs 맞히다', right: '구별 필요', rule: (lang: string) => lang ==='ko'?'"맞추다"는 기준에 맞게 조정, "맞히다"는 정답을 알아냄':'"맞추다" to adjust to standard, "맞히다" to get the right answer' },
+  { wrong: '느즈막히', right: '느지막이', rule: (lang: string) => lang ==='ko'?'"느지막이"가 표준어':'"느지막이" is the standard form' },
+  { wrong: '부딪히다', right: '부딪히다', rule: (lang: string) => lang ==='ko'?'"부딪히다"(피동)와 "부딪치다"(능동)는 다른 표현':'"부딪히다" (passive) vs "부딪치다" (active) are different' },
+  { wrong: '어떻해', right: '어떻게 해', rule: (lang: string) => lang ==='ko'?'"어떻해"는 없는 말, "어떻게 해" 또는 "어떡해"가 맞음':'"어떻해" doesn\'t exist; use "어떻게 해" or "어떡해"' },
 ]
 
 const EXTERNAL = [
