@@ -71,8 +71,8 @@ export default function UnitConverter() {
       return convertTemp(num, from, to).toFixed(6).replace(/\.?0+$/, '')
     }
     const toBase = (cat as typeof CATEGORIES['길이']).toBase
-    const baseVal = num * (toBase[from] ?? 1)
-    const result = baseVal / (toBase[to] ?? 1)
+    const baseVal = num * (toBase[from as keyof typeof toBase] ?? 1)
+    const result = baseVal / (toBase[to as keyof typeof toBase] ?? 1)    
     return result.toFixed(10).replace(/\.?0+$/, '')
   }
 
