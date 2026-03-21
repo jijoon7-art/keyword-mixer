@@ -113,7 +113,7 @@ export default function ColorExtractor() {
         colorMap.set(key, (colorMap.get(key) ?? 0) + 1)
       }
 
-      const sorted = [...colorMap.entries()].sort((a, b) => b[1] - a[1])
+      const sorted = Array.from(colorMap.entries()).sort((a, b) => b[1] - a[1])
       const total = sorted.reduce((sum, [, c]) => sum + c, 0)
 
       const extracted: ExtractedColor[] = sorted.slice(0, colorCount).map(([key, count]) => {
