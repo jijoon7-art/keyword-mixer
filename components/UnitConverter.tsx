@@ -96,7 +96,7 @@ export default function UnitConverter() {
     .filter(u => u !== fromUnit)
     .map(u => ({
       unit: u,
-      label: (cat as typeof CATEGORIES['길이']).labels[u] ?? u,
+      label: (cat as typeof CATEGORIES['길이']).labels[u as keyof (typeof CATEGORIES['길이'])['labels']] ?? u,
       result: convert(value, fromUnit, u),
     }))
 
