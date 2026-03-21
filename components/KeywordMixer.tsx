@@ -113,7 +113,6 @@ export default function KeywordMixer() {
 
     let combined = combineKeywords(groupDataForCombine, patterns, {
       separator,
-      prefix,
       deduplicate: dedup,
       lowercase: caseMode === 'lower',
       trim: true,
