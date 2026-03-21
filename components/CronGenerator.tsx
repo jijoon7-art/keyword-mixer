@@ -10,16 +10,16 @@ const T = {
 }
 
 const PRESETS = [
-  { label: (lang: string) => lang ==='ko'?'매분':'Every minute', cron: '* * * * *' },
-  { label: (lang: string) => lang ==='ko'?'매시 정각':'Every hour', cron: '0 * * * *' },
-  { label: (lang: string) => lang ==='ko'?'매일 자정':'Daily midnight', cron: '0 0 * * *' },
-  { label: (lang: string) => lang ==='ko'?'매일 오전 9시':'Daily 9AM', cron: '0 9 * * *' },
-  { label: (lang: string) => lang ==='ko'?'매주 월요일':'Weekly Monday', cron: '0 9 * * 1' },
-  { label: (lang: string) => lang ==='ko'?'매월 1일':'Monthly 1st', cron: '0 0 1 * *' },
-  { label: (lang: string) => lang ==='ko'?'평일 오전 9시':'Weekdays 9AM', cron: '0 9 * * 1-5' },
-  { label: (lang: string) => lang ==='ko'?'매시간 15분':'Every hour :15', cron: '15 * * * *' },
-  { label: (lang: string) => lang ==='ko'?'6시간마다':'Every 6 hours', cron: '0 */6 * * *' },
-  { label: (lang: string) => lang ==='ko'?'매년 1월 1일':'Yearly Jan 1', cron: '0 0 1 1 *' },
+  { label: (lang: string) => lang==='ko'?'매분':'Every minute', cron: '* * * * *' },
+  { label: (lang: string) => lang==='ko'?'매시 정각':'Every hour', cron: '0 * * * *' },
+  { label: (lang: string) => lang==='ko'?'매일 자정':'Daily midnight', cron: '0 0 * * *' },
+  { label: (lang: string) => lang==='ko'?'매일 오전 9시':'Daily 9AM', cron: '0 9 * * *' },
+  { label: (lang: string) => lang==='ko'?'매주 월요일':'Weekly Monday', cron: '0 9 * * 1' },
+  { label: (lang: string) => lang==='ko'?'매월 1일':'Monthly 1st', cron: '0 0 1 * *' },
+  { label: (lang: string) => lang==='ko'?'평일 오전 9시':'Weekdays 9AM', cron: '0 9 * * 1-5' },
+  { label: (lang: string) => lang==='ko'?'매시간 15분':'Every hour :15', cron: '15 * * * *' },
+  { label: (lang: string) => lang==='ko'?'6시간마다':'Every 6 hours', cron: '0 */6 * * *' },
+  { label: (lang: string) => lang==='ko'?'매년 1월 1일':'Yearly Jan 1', cron: '0 0 1 1 *' },
 ]
 
 function parseCron(expr: string, lang: 'ko'|'en'): string {

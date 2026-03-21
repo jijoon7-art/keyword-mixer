@@ -55,11 +55,11 @@ const SAMPLE_JSON = `{
   }
 }`
 
-function getType(value: unknown, optional: boolean, readonly: boolean, sem: string): string {
+function getType(value: unknown, optional: boolean, readonly: boolean): string {
   if (value === null) return 'null'
   if (Array.isArray(value)) {
     if (value.length === 0) return 'unknown[]'
-    const types = Array.from(new Set(value.map(v => getType(v, optional, readonly, sem))))
+    const types = Array.from(new Set(value.map(v => getType(v, optional, readonly))))
     return types.length === 1 ? `${types[0]}[]` : `(${types.join(' | ')})[]`
   }
   if (typeof value === 'object') return 'object' // handled separately
@@ -82,7 +82,7 @@ function generateInterface(obj: Record<string, unknown>, name: string, optional:
       generateInterface(val[0] as Record<string, unknown>, childName, optional, readonly, semi, interfaces)
       lines.push(`  ${ro}${key}${opt}: ${childName}[]${sep}`)
     } else {
-      lines.push(`  ${ro}${key}${opt}: ${getType(val, optional, readonly, semi)}${sep}`)
+      lines.push(`  ${ro}${key}${opt}: ${getType(val, optional, readonly)}${sep}`)
     }
   }
 
