@@ -33,6 +33,9 @@ const MENU = [
       { href: '/interest-calculator', label: '이자 계산기', icon: TrendingUp },
       { href: '/lotto', label: '로또 번호 생성기', icon: Ticket },
       { href: '/id-generator', label: '주민번호 생성기(테스트)', icon: CreditCard },
+      { href: '/date-calculator', label: '날짜 계산기', icon: Calendar },
+      { href: '/time-calculator', label: '시간 계산기', icon: Clock },
+      { href: '/number-to-korean', label: '숫자 한글 변환기', icon: Type },
     ],
   },
   {
@@ -46,6 +49,7 @@ const MENU = [
       { href: '/ascii-art', label: 'ASCII 아트 생성기', icon: Wand2 },
       { href: '/hanja-converter', label: '한자 변환기', icon: FileText },
       { href: '/spell-checker', label: '맞춤법 검사기', icon: FileText },
+      { href: '/nickname-generator', label: '닉네임 생성기', icon: Wand2 },
     ],
   },
   {
@@ -54,6 +58,8 @@ const MENU = [
       { href: '/image-compressor', label: '이미지 압축기', icon: ImageDown },
       { href: '/image-editor', label: '이미지 편집기', icon: ImageIcon },
       { href: '/pdf-tools', label: 'PDF 도구', icon: FilePlus },
+      { href: '/color-extractor', label: '이미지 색상 추출기', icon: Palette },
+      { href: '/image-base64', label: '이미지 Base64 변환', icon: ImageDown },
     ],
   },
   {
@@ -71,6 +77,8 @@ const MENU = [
       { href: '/jwt-decoder', label: 'JWT 디코더', icon: FileJson },
       { href: '/cron-generator', label: 'Cron 생성기', icon: Clock },
       { href: '/number-converter', label: '진법 변환기', icon: Binary },
+      { href: '/hash-generator', label: 'Hash 생성기', icon: FileJson },
+      { href: '/json-to-typescript', label: 'JSON→TypeScript', icon: FileJson },
     ],
   },
   {

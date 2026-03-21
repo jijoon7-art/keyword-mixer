@@ -3,15 +3,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://keyword-mixer.vercel.app'
   const tools = [
     'char-counter','youtube-tags','hashtag-generator','utm-builder',
-    'calculators','age-calculator','dday-calculator','exchange-rate',
-    'pyeongsu-calculator','interest-calculator','lotto','id-generator',
+    'calculators','age-calculator','dday-calculator','date-calculator',
+    'exchange-rate','pyeongsu-calculator','interest-calculator',
+    'time-calculator','lotto','id-generator','number-to-korean',
     'text-tools','text-diff','typing-speed','emoji-search','ascii-art',
-    'hanja-converter','spell-checker','line-break-remover',
-    'image-compressor','image-editor','pdf-tools',
+    'hanja-converter','spell-checker','line-break-remover','nickname-generator',
+    'image-compressor','image-editor','pdf-tools','color-extractor','image-base64',
     'json-formatter','json-csv','base64','url-encoder',
     'markdown-editor','css-gradient','regex-tester','ip-lookup',
     'meta-tag-generator','jwt-decoder','cron-generator',
-    'number-converter',
+    'number-converter','hash-generator','json-to-typescript',
     'unit-converter','timezone-converter','timer',
     'password-generator','qr-generator','color-palette','color-converter','color-contrast',
   ]
