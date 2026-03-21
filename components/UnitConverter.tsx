@@ -151,7 +151,7 @@ export default function UnitConverter() {
                 className="bg-surface-DEFAULT border border-surface-border rounded-lg px-3 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500/50 transition-all"
               >
                 {cat.units.map(u => (
-                  <option key={u} value={u}>{u} — {(cat as typeof CATEGORIES['길이']).labels[u]}</option>
+                  <option key={u} value={u}>{u} — {(cat as typeof CATEGORIES['길이']).labels[u as keyof (typeof CATEGORIES['길이'])['labels']]}</option>
                 ))}
               </select>
             </div>
@@ -176,7 +176,7 @@ export default function UnitConverter() {
                   className="bg-surface-DEFAULT border border-surface-border rounded-lg px-3 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500/50 transition-all"
                 >
                   {cat.units.map(u => (
-                    <option key={u} value={u}>{u} — {(cat as typeof CATEGORIES['길이']).labels[u]}</option>
+                    <option key={u} value={u}>{u} — {(cat as typeof CATEGORIES['길이']).labels[u as keyof (typeof CATEGORIES['길이'])['labels']]}</option>
                   ))}
                 </select>
                 <button onClick={copy} className={`px-3 py-2.5 rounded-lg border transition-all ${copied ? 'bg-brand-500/20 border-brand-500/40 text-brand-400' : 'border-surface-border text-slate-400 hover:border-brand-500/40 hover:text-brand-300 bg-surface-DEFAULT'}`}>
