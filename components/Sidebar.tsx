@@ -8,7 +8,8 @@ import {
   ImageDown, FileText, Clock, GitCompare, FilePlus,
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
   Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
-  Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode
+  Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode,
+  Heart, Search
 } from 'lucide-react'
 
 const MENU = [
@@ -89,10 +90,10 @@ const MENU = [
   {
     category: '건강/다이어트',
     items: [
-      { href: '/body-fat-calculator', label: '체지방률 계산기', icon: Activity },
-      { href: '/blood-pressure-tracker', label: '혈압 기록/분석기', icon: Activity },
-      { href: '/calorie-food-search', label: '음식 칼로리 검색', icon: Search },
-      { href: '/exercise-calorie', label: '운동 칼로리 계산기', icon: Activity },
+      { href: '/body-fat-calculator', label: '체지방률 계산기', icon: Heart },
+      { href: '/blood-pressure-tracker', label: '혈압 기록/분석기', icon: Heart },
+      { href: '/calorie-food-search', label: '음식 칼로리 검색', icon: Heart },
+      { href: '/exercise-calorie', label: '운동 칼로리 계산기', icon: Heart },
     ],
   },
   {
