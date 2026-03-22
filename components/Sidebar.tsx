@@ -37,11 +37,7 @@ const MENU = [
       { href: '/date-calculator', label: '날짜 계산기', icon: Calendar },
       { href: '/time-calculator', label: '시간 계산기', icon: Clock },
       { href: '/number-to-korean', label: '숫자 한글 변환기', icon: Type },
-      { href: '/tax-calculator', label: '세금 계산기', icon: Calculator },
-      { href: '/salary-calculator', label: '월급 실수령액', icon: TrendingUp },
-      { href: '/compound-interest', label: '복리 계산기', icon: TrendingUp },
-      { href: '/loan-repayment-table', label: '대출 상환표', icon: FileText },
-      { href: '/statistics-calculator', label: '통계 계산기', icon: Calculator },
+
     ],
   },
   {
@@ -88,12 +84,36 @@ const MENU = [
     ],
   },
   {
+    category: '문서/비즈니스',
+    items: [
+      { href: '/payslip-generator', label: '급여명세서 생성기', icon: FileText },
+      { href: '/invoice-generator', label: '견적서/영수증 생성기', icon: FileText },
+    ],
+  },
+  {
+    category: '금융/부동산',
+    items: [
+      { href: '/tax-calculator', label: '세금 계산기', icon: Calculator },
+      { href: '/salary-calculator', label: '월급 실수령액', icon: TrendingUp },
+      { href: '/compound-interest', label: '복리 계산기', icon: TrendingUp },
+      { href: '/loan-repayment-table', label: '대출 상환표', icon: FileText },
+      { href: '/savings-calculator', label: '적금 만기금액', icon: TrendingUp },
+      { href: '/stock-calculator', label: '주식 수익률', icon: TrendingUp },
+      { href: '/jeonse-calculator', label: '전월세 계산기', icon: Home },
+      { href: '/subscription-calculator', label: '청약 가점 계산기', icon: Home },
+      { href: '/currency-premium', label: '환전 우대율', icon: DollarSign },
+      { href: '/statistics-calculator', label: '통계 계산기', icon: Calculator },
+    ],
+  },
+  {
     category: '건강/다이어트',
     items: [
       { href: '/body-fat-calculator', label: '체지방률 계산기', icon: Heart },
       { href: '/blood-pressure-tracker', label: '혈압 기록/분석기', icon: Heart },
       { href: '/calorie-food-search', label: '음식 칼로리 검색', icon: Heart },
       { href: '/exercise-calorie', label: '운동 칼로리 계산기', icon: Heart },
+      { href: '/nutrition-calculator', label: '영양소 계산기', icon: Heart },
+      { href: '/sleep-calculator', label: '수면 계산기', icon: Heart },
     ],
   },
   {
