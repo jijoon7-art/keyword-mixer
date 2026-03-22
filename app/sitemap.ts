@@ -27,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'unit-converter','timezone-converter','timer',
     'password-generator','qr-generator','color-palette','color-converter','color-contrast',
     'color-temperature','internet-speed-converter',
+    'tip-calculator','percentage-calculator','roman-numeral','morse-code','world-clock',
+    'countdown-creator','binary-text','aspect-ratio','css-unit-converter','character-counter-pro',
   ]
   return [
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },

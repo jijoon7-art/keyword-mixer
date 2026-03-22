@@ -52,6 +52,10 @@ const MENU = [
       { href: '/hanja-converter', label: '한자 변환기', icon: FileText },
       { href: '/spell-checker', label: '맞춤법 검사기', icon: FileText },
       { href: '/nickname-generator', label: '닉네임 생성기', icon: Wand2 },
+      { href: '/character-counter-pro', label: '글자수 세기 Pro', icon: Type },
+      { href: '/morse-code', label: '모스부호 변환기', icon: FileCode },
+      { href: '/roman-numeral', label: '로마 숫자 변환기', icon: Type },
+      { href: '/binary-text', label: '이진수 텍스트 변환', icon: Binary },
     ],
   },
   {
@@ -103,6 +107,8 @@ const MENU = [
       { href: '/subscription-calculator', label: '청약 가점 계산기', icon: Home },
       { href: '/currency-premium', label: '환전 우대율', icon: DollarSign },
       { href: '/statistics-calculator', label: '통계 계산기', icon: Calculator },
+      { href: '/percentage-calculator', label: '퍼센트 계산기', icon: Calculator },
+      { href: '/tip-calculator', label: '팁/더치페이 계산기', icon: DollarSign },
     ],
   },
   {
@@ -137,6 +143,10 @@ const MENU = [
       { href: '/electricity-calculator', label: '전기요금 계산기', icon: Calculator },
       { href: '/gas-calculator', label: '가스요금 계산기', icon: Calculator },
       { href: '/car-cost-calculator', label: '자동차 유지비', icon: Calculator },
+      { href: '/world-clock', label: '세계 시계', icon: Clock },
+      { href: '/countdown-creator', label: '카운트다운/D-day', icon: Calendar },
+      { href: '/aspect-ratio', label: '화면 비율 계산기', icon: ImageIcon },
+      { href: '/css-unit-converter', label: 'CSS 단위 변환기', icon: FileCode },
     ],
   },
 ]
