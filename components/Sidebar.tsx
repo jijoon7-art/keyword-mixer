@@ -36,6 +36,11 @@ const MENU = [
       { href: '/date-calculator', label: '날짜 계산기', icon: Calendar },
       { href: '/time-calculator', label: '시간 계산기', icon: Clock },
       { href: '/number-to-korean', label: '숫자 한글 변환기', icon: Type },
+      { href: '/tax-calculator', label: '세금 계산기', icon: Calculator },
+      { href: '/salary-calculator', label: '월급 실수령액', icon: TrendingUp },
+      { href: '/compound-interest', label: '복리 계산기', icon: TrendingUp },
+      { href: '/loan-repayment-table', label: '대출 상환표', icon: FileText },
+      { href: '/statistics-calculator', label: '통계 계산기', icon: Calculator },
     ],
   },
   {
@@ -79,6 +84,15 @@ const MENU = [
       { href: '/number-converter', label: '진법 변환기', icon: Binary },
       { href: '/hash-generator', label: 'Hash 생성기', icon: FileJson },
       { href: '/json-to-typescript', label: 'JSON→TypeScript', icon: FileJson },
+    ],
+  },
+  {
+    category: '건강/다이어트',
+    items: [
+      { href: '/body-fat-calculator', label: '체지방률 계산기', icon: Activity },
+      { href: '/blood-pressure-tracker', label: '혈압 기록/분석기', icon: Activity },
+      { href: '/calorie-food-search', label: '음식 칼로리 검색', icon: Search },
+      { href: '/exercise-calorie', label: '운동 칼로리 계산기', icon: Activity },
     ],
   },
   {
