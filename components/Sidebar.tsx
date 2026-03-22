@@ -114,6 +114,11 @@ const MENU = [
       { href: '/exercise-calorie', label: '운동 칼로리 계산기', icon: Heart },
       { href: '/nutrition-calculator', label: '영양소 계산기', icon: Heart },
       { href: '/sleep-calculator', label: '수면 계산기', icon: Heart },
+      { href: '/steps-calorie', label: '만보기 칼로리', icon: Heart },
+      { href: '/blood-sugar-tracker', label: '혈당 기록/분석기', icon: Heart },
+      { href: '/menstrual-calculator', label: '생리주기 계산기', icon: Heart },
+      { href: '/baby-development', label: '태아 발달 주수', icon: Heart },
+      { href: '/height-predictor', label: '키 성장 예측기', icon: Heart },
     ],
   },
   {
@@ -127,6 +132,11 @@ const MENU = [
       { href: '/color-palette', label: '색상 팔레트 생성기', icon: Palette },
       { href: '/color-converter', label: '색상 코드 변환기', icon: Palette },
       { href: '/color-contrast', label: '색상 대비 검사기', icon: Palette },
+      { href: '/color-temperature', label: '색온도 변환기', icon: Palette },
+      { href: '/internet-speed-converter', label: '인터넷 속도 변환', icon: Wifi },
+      { href: '/electricity-calculator', label: '전기요금 계산기', icon: Calculator },
+      { href: '/gas-calculator', label: '가스요금 계산기', icon: Calculator },
+      { href: '/car-cost-calculator', label: '자동차 유지비', icon: Calculator },
     ],
   },
 ]

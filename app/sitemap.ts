@@ -14,6 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'body-fat-calculator','blood-pressure-tracker',
     'calorie-food-search','exercise-calorie',
     'nutrition-calculator','sleep-calculator',
+    'steps-calorie','blood-sugar-tracker','menstrual-calculator',
+    'baby-development','height-predictor',
+    'car-cost-calculator','electricity-calculator','gas-calculator',
     'text-tools','text-diff','typing-speed','emoji-search','ascii-art',
     'hanja-converter','spell-checker','line-break-remover','nickname-generator',
     'image-compressor','image-editor','pdf-tools','color-extractor','image-base64',
@@ -23,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'number-converter','hash-generator','json-to-typescript',
     'unit-converter','timezone-converter','timer',
     'password-generator','qr-generator','color-palette','color-converter','color-contrast',
+    'color-temperature','internet-speed-converter',
   ]
   return [
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
