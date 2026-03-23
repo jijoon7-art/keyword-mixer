@@ -53,6 +53,7 @@ const MENU = [
       { href: '/spell-checker', label: '맞춤법 검사기', icon: FileText },
       { href: '/nickname-generator', label: '닉네임 생성기', icon: Wand2 },
       { href: '/character-counter-pro', label: '글자수 세기 Pro', icon: Type },
+      { href: '/text-cleaner', label: '텍스트 정리/청소기', icon: Type },
       { href: '/morse-code', label: '모스부호 변환기', icon: FileCode },
       { href: '/roman-numeral', label: '로마 숫자 변환기', icon: Type },
       { href: '/binary-text', label: '이진수 텍스트 변환', icon: Binary },
@@ -85,6 +86,17 @@ const MENU = [
       { href: '/number-converter', label: '진법 변환기', icon: Binary },
       { href: '/hash-generator', label: 'Hash 생성기', icon: FileJson },
       { href: '/json-to-typescript', label: 'JSON→TypeScript', icon: FileJson },
+    ],
+  },
+  {
+    category: '재미/운세',
+    items: [
+      { href: '/zodiac-calculator', label: '띠/별자리 계산기', icon: Heart },
+      { href: '/love-calculator', label: '궁합 계산기', icon: Heart },
+      { href: '/lucky-number', label: '행운 번호 생성기', icon: Heart },
+      { href: '/biorhythm', label: '바이오리듬', icon: Heart },
+      { href: '/mbti-compatibility', label: 'MBTI 궁합', icon: Heart },
+      { href: '/name-meaning', label: '이름 의미 분석기', icon: Type },
     ],
   },
   {
@@ -131,6 +143,10 @@ const MENU = [
       { href: '/baby-development', label: '태아 발달 주수', icon: Heart },
       { href: '/height-predictor', label: '키 성장 예측기', icon: Heart },
       { href: '/water-intake', label: '물 섭취량 계산기', icon: Heart },
+      { href: '/ideal-weight', label: '이상 체중 계산기', icon: Heart },
+      { href: '/waist-hip-ratio', label: '허리 엉덩이 비율', icon: Heart },
+      { href: '/calories-burned-swim', label: '수영 칼로리', icon: Heart },
+      { href: '/protein-calculator', label: '단백질 섭취량', icon: Heart },
     ],
   },
   {
