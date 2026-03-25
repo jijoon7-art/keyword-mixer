@@ -11,7 +11,7 @@ const T = {
 }
 
 const BOOKS = [
-  { title_ko: '해리포터와 마법사의 돌', title_en: 'Harry Potter (Sorcerer's Stone)', words: 77325 },
+  { title_ko: '해리포터와 마법사의 돌', title_en: "Harry Potter (Sorcerer's Stone)", words: 77325 },
   { title_ko: '어린 왕자', title_en: 'The Little Prince', words: 17000 },
   { title_ko: '노인과 바다', title_en: 'The Old Man and the Sea', words: 27000 },
   { title_ko: '1984', title_en: '1984 (Orwell)', words: 88942 },
