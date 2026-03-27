@@ -9,7 +9,7 @@ import {
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
   Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
   Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode,
-  Heart, Search
+  Heart, Search, Stamp, LayoutDashboard
 } from 'lucide-react'
 
 const MENU = [
