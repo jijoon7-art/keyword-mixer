@@ -103,6 +103,7 @@ const MENU = [
     category: '문서/비즈니스',
     items: [
       { href: '/payslip-generator', label: '급여명세서 생성기', icon: FileText },
+      { href: '/stamp-maker', label: '도장 만들기', icon: Stamp },
       { href: '/invoice-generator', label: '견적서/영수증 생성기', icon: FileText },
     ],
   },
@@ -176,6 +177,7 @@ const MENU = [
       { href: '/concrete-calculator', label: '콘크리트 계산기', icon: Calculator },
       { href: '/world-clock', label: '세계 시계', icon: Clock },
       { href: '/countdown-creator', label: '카운트다운/D-day', icon: Calendar },
+      { href: '/random-picker', label: '랜덤 선택기/뽑기', icon: Shuffle },
       { href: '/aspect-ratio', label: '화면 비율 계산기', icon: ImageIcon },
       { href: '/css-unit-converter', label: 'CSS 단위 변환기', icon: FileCode },
     ],
