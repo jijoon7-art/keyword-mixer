@@ -9,7 +9,7 @@ import {
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
   Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
   Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode,
-  Heart, Search, Stamp, LayoutDashboard
+  Heart, Search
 } from 'lucide-react'
 
 const MENU = [
@@ -97,6 +97,7 @@ const MENU = [
       { href: '/biorhythm', label: '바이오리듬', icon: Heart },
       { href: '/mbti-compatibility', label: 'MBTI 궁합', icon: Heart },
       { href: '/name-meaning', label: '이름 의미 분석기', icon: Type },
+      { href: '/lunch-picker', label: '점심 메뉴 추천기', icon: Heart },
     ],
   },
   {
@@ -124,8 +125,13 @@ const MENU = [
       { href: '/retirement-calculator', label: '은퇴 계획 계산기', icon: TrendingUp },
       { href: '/real-estate-tax', label: '부동산 취득세', icon: Home },
       { href: '/freelancer-tax', label: '프리랜서 세금', icon: Calculator },
+      { href: '/health-insurance', label: '건강보험료 계산기', icon: Heart },
       { href: '/split-calculator', label: '비율 분할 계산기', icon: Calculator },
+      { href: '/severance-pay', label: '퇴직금 계산기', icon: Calculator },
+      { href: '/investment-return', label: '투자 수익률 계산기', icon: TrendingUp },
       { href: '/percentage-calculator', label: '퍼센트 계산기', icon: Calculator },
+      { href: '/vat-calculator', label: '부가세 계산기', icon: Calculator },
+      { href: '/speed-distance-time', label: '속력/거리/시간', icon: Calculator },
       { href: '/tip-calculator', label: '팁/더치페이 계산기', icon: DollarSign },
       { href: '/unit-price-calculator', label: '단가/가성비 계산기', icon: Calculator },
       { href: '/gpa-calculator', label: '학점(GPA) 계산기', icon: Calculator },
@@ -148,6 +154,7 @@ const MENU = [
       { href: '/height-predictor', label: '키 성장 예측기', icon: Heart },
       { href: '/water-intake', label: '물 섭취량 계산기', icon: Heart },
       { href: '/ideal-weight', label: '이상 체중 계산기', icon: Heart },
+      { href: '/bmi-calculator-pro', label: 'BMI 계산기 Pro', icon: Heart },
       { href: '/waist-hip-ratio', label: '허리 엉덩이 비율', icon: Heart },
       { href: '/calories-burned-swim', label: '수영 칼로리', icon: Heart },
       { href: '/protein-calculator', label: '단백질 섭취량', icon: Heart },
@@ -170,6 +177,9 @@ const MENU = [
       { href: '/gas-calculator', label: '가스요금 계산기', icon: Calculator },
       { href: '/car-cost-calculator', label: '자동차 유지비', icon: Calculator },
       { href: '/fuel-cost', label: '연료비 계산기', icon: Calculator },
+      { href: '/alcohol-calculator', label: '음주/BAC 계산기', icon: Calculator },
+      { href: '/timezone-meeting', label: '국제 미팅 시간', icon: Clock },
+      { href: '/file-size-converter', label: '파일 크기 변환기', icon: FileText },
       { href: '/meeting-cost', label: '회의비용 계산기', icon: Clock },
       { href: '/date-diff-calculator', label: '날짜 계산기 Pro', icon: Calendar },
       { href: '/reading-speed', label: '독서 속도 계산기', icon: FileText },
@@ -177,6 +187,8 @@ const MENU = [
       { href: '/concrete-calculator', label: '콘크리트 계산기', icon: Calculator },
       { href: '/world-clock', label: '세계 시계', icon: Clock },
       { href: '/countdown-creator', label: '카운트다운/D-day', icon: Calendar },
+      { href: '/stopwatch', label: '스톱워치', icon: Clock },
+      { href: '/pomodoro-pro', label: '포모도로 타이머', icon: Clock },
       { href: '/random-picker', label: '랜덤 선택기/뽑기', icon: Shuffle },
       { href: '/aspect-ratio', label: '화면 비율 계산기', icon: ImageIcon },
       { href: '/css-unit-converter', label: 'CSS 단위 변환기', icon: FileCode },
