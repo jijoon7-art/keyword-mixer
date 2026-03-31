@@ -3,13 +3,13 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  Shuffle, Type, Youtube, Link2, Hash, X,
+  Shuffle, Type, Youtube, Link2, Hash,
   FileJson, Lock, Palette, Binary, Ruler, QrCode,
   ImageDown, FileText, Clock, GitCompare, FilePlus,
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
   Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
   Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode,
-  Heart, Search, Stamp, LayoutDashboard
+  Heart, Search, LayoutDashboard, Key, Stamp
 } from 'lucide-react'
 
 const MENU = [
@@ -98,13 +98,14 @@ const MENU = [
       { href: '/mbti-compatibility', label: 'MBTI 궁합', icon: Heart },
       { href: '/name-meaning', label: '이름 의미 분석기', icon: Type },
       { href: '/lunch-picker', label: '점심 메뉴 추천기', icon: Heart },
+      { href: '/childbirth-subsidy', label: '출산·육아 지원금', icon: Baby },
     ],
   },
   {
     category: '문서/비즈니스',
     items: [
       { href: '/payslip-generator', label: '급여명세서 생성기', icon: FileText },
-      { href: '/stamp-maker', label: '도장 만들기', icon: Stamp },
+      { href: '/stamp-maker', label: '도장 만들기', icon: LayoutDashboard },
       { href: '/invoice-generator', label: '견적서/영수증 생성기', icon: FileText },
     ],
   },
@@ -146,6 +147,7 @@ const MENU = [
       { href: '/calorie-food-search', label: '음식 칼로리 검색', icon: Heart },
       { href: '/exercise-calorie', label: '운동 칼로리 계산기', icon: Heart },
       { href: '/nutrition-calculator', label: '영양소 계산기', icon: Heart },
+      { href: '/nutrition-score', label: '영양 점수 계산기', icon: Heart },
       { href: '/sleep-calculator', label: '수면 계산기', icon: Heart },
       { href: '/steps-calorie', label: '만보기 칼로리', icon: Heart },
       { href: '/blood-sugar-tracker', label: '혈당 기록/분석기', icon: Heart },
@@ -167,6 +169,7 @@ const MENU = [
       { href: '/timezone-converter', label: '타임존 변환기', icon: Clock },
       { href: '/timer', label: '타이머 / 스톱워치', icon: Timer },
       { href: '/password-generator', label: '비밀번호 생성기', icon: Lock },
+      { href: '/password-strength', label: '비밀번호 강도 검사', icon: Lock },
       { href: '/qr-generator', label: 'QR코드 생성기', icon: QrCode },
       { href: '/color-palette', label: '색상 팔레트 생성기', icon: Palette },
       { href: '/color-converter', label: '색상 코드 변환기', icon: Palette },

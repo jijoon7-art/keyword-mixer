@@ -4,7 +4,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const tools = [
     'zodiac-calculator','love-calculator','lucky-number','biorhythm','mbti-compatibility',
     'ideal-weight','waist-hip-ratio','calories-burned-swim','protein-calculator','name-meaning',
-    'text-cleaner','stamp-maker','bmi-calculator-pro','pomodoro-pro','stopwatch',
+    'text-cleaner','stamp-maker',
+    'mortgage-calculator','minimum-wage','lease-calculator','childbirth-subsidy','nutrition-score','invoice-calculator','scientific-calculator','bmi-calculator-pro','pomodoro-pro','stopwatch',
     'vat-calculator','speed-distance-time','password-strength','lunch-picker','health-insurance',
     'severance-pay','investment-return','alcohol-calculator','timezone-meeting',
     'file-size-converter','number-base-converter',

@@ -135,7 +135,7 @@ export default function Header({ onMenuToggle, menuOpen }: { onMenuToggle?: () =
 
         {/* 우측: 도구 수 + KO/EN 토글 */}
         <div className="flex items-center gap-2 flex-shrink-0 ml-auto">
-          <span className="text-slate-700 text-xs hidden md:block">123개 무료 도구</span>
+          <span className="text-slate-700 text-xs hidden md:block">130개 무료 도구</span>
           {/* KO/EN 토글 — 불투명 배경 */}
           <div
             className="flex rounded-lg border border-surface-border overflow-hidden"
