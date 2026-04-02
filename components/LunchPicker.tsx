@@ -100,7 +100,7 @@ export default function LunchPicker() {
             <p className="text-sm text-slate-500 mt-1">{result.cat}</p>
           </>
         ) : (
-          <p className="text-slate-600 text-base">{lang==='ko'?'버튼을 눌러 오늘의 점심을 정하세요!':'Press the button to decide today's lunch!'}</p>
+          <p className="text-slate-600 text-base">{lang==='ko'?'버튼을 눌러 오늘의 점심을 정하세요!':"Press the button to decide today's lunch!"}</p>
         )}
       </div>
       <button onClick={pick} disabled={spinning}
@@ -121,7 +121,7 @@ export default function LunchPicker() {
         description={tx.desc}
         howToUse={lang==='ko'?[{step:'카테고리 선택',desc:'원하는 음식 카테고리를 선택하세요.'},{step:'뽑기 버튼',desc:'오늘의 점심 뽑기 버튼을 누르세요.'},{step:'결과 확인',desc:'랜덤으로 오늘의 점심 메뉴가 선택됩니다.'},{step:'마음에 안 들면',desc:'다시 뽑기 버튼을 누르면 됩니다.'}]:[{step:'Select categories',desc:'Choose food categories you want.'},{step:'Press button',desc:'Click the Pick My Lunch button.'},{step:'View result',desc:'A random menu is selected for today.'},{step:'Not satisfied?',desc:'Just press the button again!'}]}
         whyUse={lang==='ko'?[{title:'5개 카테고리 35종 메뉴',desc:'한식·양식·일식·중식·분식 5개 카테고리 35가지 메뉴.'},{title:'카테고리별 필터',desc:'원하는 카테고리만 선택해 뽑기 범위를 좁힐 수 있습니다.'},{title:'최근 기록',desc:'최근 뽑힌 메뉴 5개를 기억해 중복을 피할 수 있습니다.'},{title:'재미있는 애니메이션',desc:'뽑기 과정이 슬롯머신처럼 빠르게 바뀌어 재미를 더합니다.'}]:[{title:'35 menus in 5 categories',desc:'Korean, Western, Japanese, Chinese, and Street food categories.'},{title:'Category filter',desc:'Narrow down choices by selecting only desired categories.'},{title:'Recent history',desc:'Remembers last 5 picks to help avoid repeats.'},{title:'Fun animation',desc:'Slot machine-style spinning adds excitement to the pick.'}]}
-        faqs={lang==='ko'?[{q:'메뉴를 추가할 수 있나요?',a:'현재는 기본 메뉴 35종을 제공합니다.'},{q:'특정 메뉴가 싫으면?',a:'해당 카테고리를 선택 해제하면 그 카테고리 메뉴들이 제외됩니다.'},{q:'팀 전체 점심 메뉴를 정할 때도 쓸 수 있나요?',a:'네! 여러 명이 동시에 보면서 결과를 공유할 수 있습니다.'},{q:'메뉴가 계속 같은 게 나오면?',a:'완전한 랜덤이므로 같은 메뉴가 연속으로 나올 수 있습니다. 당신의 운명이 그 메뉴인 거예요! 😄'}]:[{q:'Can I add custom menus?',a:'Currently provides 35 pre-set menus.'},{q:'What if I dislike a category?',a:'Deselect that category to exclude its menus from the pool.'},{q:'Use for team lunch decisions?',a:'Yes! Everyone can watch the screen together and share the result.'},{q:'Same menu keeps appearing?',a:'It's completely random - if the same menu keeps appearing, it's fate! 😄'}]}
+        faqs={lang==='ko'?[{q:'메뉴를 추가할 수 있나요?',a:'현재는 기본 메뉴 35종을 제공합니다.'},{q:'특정 메뉴가 싫으면?',a:'해당 카테고리를 선택 해제하면 그 카테고리 메뉴들이 제외됩니다.'},{q:'팀 전체 점심 메뉴를 정할 때도 쓸 수 있나요?',a:'네! 여러 명이 동시에 보면서 결과를 공유할 수 있습니다.'},{q:'메뉴가 계속 같은 게 나오면?',a:'완전한 랜덤이므로 같은 메뉴가 연속으로 나올 수 있습니다. 당신의 운명이 그 메뉴인 거예요! 😄'}]:[{q:'Can I add custom menus?',a:'Currently provides 35 pre-set menus.'},{q:'What if I dislike a category?',a:'Deselect that category to exclude its menus from the pool.'},{q:'Use for team lunch decisions?',a:'Yes! Everyone can watch the screen together and share the result.'},{q:'Same menu keeps appearing?',a:"It's completely random - if the same menu keeps appearing, it's fate! 😄"}]}
         keywords="점심 메뉴 추천 · 오늘 점심 뭐 먹지 · 메뉴 뽑기 · 점심 랜덤 추천 · lunch picker · random food picker · what to eat · lunch menu random"
       />
     </div>
