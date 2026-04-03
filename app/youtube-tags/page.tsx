@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import YoutubeTags from '@/components/YoutubeTags'
+import YoutubeTagGenerator from '@/components/YoutubeTagGenerator'
 
 export const metadata: Metadata = {
   title: '유튜브 태그 생성기 — 무료 YouTube SEO 태그 추출 · 해시태그 자동 생성 | Keyword Mixer',
@@ -42,7 +42,7 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <YoutubeTags />
+      <YoutubeTagGenerator />
     </>
   )
 }
