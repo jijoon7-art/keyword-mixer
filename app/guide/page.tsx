@@ -30,6 +30,13 @@ const GUIDES = [
       { href: '/guide/bmi-guide', title: 'BMI 계산법과 한국인 비만 기준', desc: '한국인에게 맞는 아시아 기준 BMI와 건강 체중 관리법', tags: ['BMI', '비만도', '체질량지수'] },
     ],
   },
+  {
+    category: '💰 금융·세금 (추가)',
+    items: [
+      { href: '/guide/vat-guide', title: '부가세 계산 방법 완벽 가이드', desc: '공급가액 추가·역산·세금계산서 발행 조건 완벽 정리', tags: ['부가세', '세금계산서', 'VAT'] },
+      { href: '/guide/tax-refund-guide', title: '연말정산 환급액 계산하는 법 2025', desc: '공제 항목별 절세 전략과 환급액 최대화 방법', tags: ['연말정산', '환급', '세액공제'] },
+    ],
+  },
 ]
 
 export default function GuidePage() {
