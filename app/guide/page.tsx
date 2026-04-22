@@ -35,6 +35,8 @@ const GUIDES = [
     items: [
       { href: '/guide/vat-guide', title: '부가세 계산 방법 완벽 가이드', desc: '공급가액 추가·역산·세금계산서 발행 조건 완벽 정리', tags: ['부가세', '세금계산서', 'VAT'] },
       { href: '/guide/tax-refund-guide', title: '연말정산 환급액 계산하는 법 2025', desc: '공제 항목별 절세 전략과 환급액 최대화 방법', tags: ['연말정산', '환급', '세액공제'] },
+      { href: '/guide/mortgage-guide', title: '주택담보대출 한도·이자 계산 방법', desc: 'LTV·DSR·DTI 규제와 월 상환액 계산법 쉽게 이해하기', tags: ['주담대', 'LTV', 'DSR'] },
+      { href: '/guide/minimum-wage-guide', title: '2025년 최저임금 완벽 가이드', desc: '최저시급 10,030원 월급 환산·주휴수당·위반 신고 방법', tags: ['최저임금', '주휴수당', '최저시급'] },
     ],
   },
 ]
