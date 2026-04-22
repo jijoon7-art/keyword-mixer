@@ -39,6 +39,13 @@ const GUIDES = [
       { href: '/guide/minimum-wage-guide', title: '2025년 최저임금 완벽 가이드', desc: '최저시급 10,030원 월급 환산·주휴수당·위반 신고 방법', tags: ['최저임금', '주휴수당', '최저시급'] },
     ],
   },
+  {
+    category: '📅 생활·건강',
+    items: [
+      { href: '/guide/date-calculator-guide', title: '날짜 계산 방법 완벽 가이드', desc: '만 나이·태어난 날수·D-day·근무일 계산 방법 총정리', tags: ['만 나이', 'D-day', '근무일'] },
+      { href: '/guide/health-insurance-guide', title: '2025 건강보험료 계산 방법 가이드', desc: '직장·지역가입자 4대보험 요율과 절감 방법 총정리', tags: ['건강보험료', '4대보험', '직장가입자'] },
+    ],
+  },
 ]
 
 export default function GuidePage() {

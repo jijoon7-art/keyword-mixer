@@ -5,6 +5,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
   return [
+
+    // 가이드 페이지 (구글 크롤 품질 향상)
+    { url: `${base}/guide`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.85 },
+    { url: `${base}/guide/severance-pay-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.82 },
+    { url: `${base}/guide/bmi-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.82 },
+    { url: `${base}/guide/vat-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.82 },
+    { url: `${base}/guide/tax-refund-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.82 },
+    { url: `${base}/guide/mortgage-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.82 },
+    { url: `${base}/guide/minimum-wage-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.82 },
+    { url: `${base}/guide/date-calculator-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.80 },
+    { url: `${base}/guide/health-insurance-guide`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.80 },
     // 홈페이지
     {
       url: base,
@@ -878,3 +889,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 }
+// NOTE: about/privacy/terms/contact pages added
