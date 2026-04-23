@@ -46,6 +46,13 @@ const GUIDES = [
       { href: '/guide/health-insurance-guide', title: '2025 건강보험료 계산 방법 가이드', desc: '직장·지역가입자 4대보험 요율과 절감 방법 총정리', tags: ['건강보험료', '4대보험', '직장가입자'] },
     ],
   },
+  {
+    category: '📈 재테크·라이프',
+    items: [
+      { href: '/guide/investment-guide', title: '투자 수익률·복리 계산 방법 가이드', desc: '단리 vs 복리, CAGR, 72의 법칙, 실질수익률 계산법', tags: ['복리', 'CAGR', '72의법칙'] },
+      { href: '/guide/mbti-guide', title: 'MBTI 궁합 완벽 가이드 — 16가지 황금 궁합', desc: '유형별 황금 궁합표와 다른 유형과 잘 지내는 방법', tags: ['MBTI 궁합', '황금 궁합', '16가지 유형'] },
+    ],
+  },
 ]
 
 export default function GuidePage() {
