@@ -33,10 +33,28 @@ body {
 ::-webkit-scrollbar-thumb { background: #3a3d4a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #4a4d5a; }
 
-/* Textarea */
+/* Input / Textarea — 전체 글자 보이게 고정 */
+input,
+textarea,
+select {
+  background-color: #0f1117;
+  color: #e2e8f0;
+  font-family: var(--font-pretendard);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+}
 textarea {
   resize: none;
-  font-family: var(--font-pretendard);
+}
+/* 자동완성 배경 덮어쓰기 (크롬) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e2e8f0;
+  -webkit-box-shadow: 0 0 0px 1000px #0f1117 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Selection */
