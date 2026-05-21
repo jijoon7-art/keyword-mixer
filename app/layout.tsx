@@ -78,6 +78,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3578085366553592" 
+        crossOrigin="anonymous"></script>
         {/* JSON-LD 구조화 데이터 - 웹사이트 전체 */}
         <script
           type="application/ld+json"
