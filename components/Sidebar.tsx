@@ -90,7 +90,7 @@ const MENU = [
   {
     category: '재미/운세',
     items: [
-      { href: '/food-worldcup', label: '음식 이상형 월드컵', icon: Heart }, // ← 안전하게 Heart 아이콘으로 추가 완료!
+      { href: '/food-worldcup', label: '음식 이상형 월드컵', icon: Heart },
       { href: '/zodiac-calculator', label: '띠/별자리 계산기', icon: Heart },
       { href: '/love-calculator', label: '궁합 계산기', icon: Heart },
       { href: '/lucky-number', label: '행운 번호 생성기', icon: Heart },
