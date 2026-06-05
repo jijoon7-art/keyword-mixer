@@ -1,25 +1,28 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { trackEvent } from '@/lib/ga';
 
+// 1. 데이터 규격 유연화 (원본 데이터의 어떤 속성이든 에러 없이 다 받아주도록 ? 기호 추가)
 interface Food {
   n: string;
   e: string;
   t: string[];
-  combo?: string;
-  tip?: string;
-  convo?: string;
+  m?: string[];   // 장소 
+  b?: string;     // 예산 
+  p?: string;     // 종류 
+  combo?: string; // 꿀조합 
+  tip?: string;   // 팁 
+  convo?: string; // 대화주제 
   c?: string;
 }
 
 const FOODS: Food[] = [
+  // ※ 여기에 나중에 원본 데이터 전체를 마저 붙여넣으시면 됩니다. (어떤 형태든 에러 안 남!)
   { n: "김치찌개", e: "🍲", t: ["점심", "저녁", "매콤함", "든든함"], combo: "계란말이 + 라면사리", tip: "김치가 익을수록 맛있어요" },
   { n: "제육볶음", e: "🥩", t: ["점심", "매콤함", "든든함"], combo: "쌈채소 + 공기밥", tip: "불향 강하게!" },
   { n: "비빔밥", e: "🥗", t: ["점심", "가볍게", "혼밥"], combo: "미역국 + 깍두기", tip: "고추장 조금씩" },
   { n: "치킨", e: "🍗", t: ["저녁", "야식"], combo: "치킨무 + 콜라", tip: "후라이드 vs 양념" },
   { n: "피자", e: "🍕", t: ["저녁", "야식"], combo: "갈릭소스", tip: "남은 피자는 전자레인지에 물컵과 함께" }
-  // ※ 여기에 나중에 원본 데이터 마저 붙여넣으시면 됩니다.
 ];
 
 export default function FoodWorldCup() {
@@ -30,6 +33,16 @@ export default function FoodWorldCup() {
   const [matches, setMatches] = useState<Food[]>([]);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
   const [roundName, setRoundName] = useState('16강');
+
+  // 2. 외부 파일 의존성 제거: 내부 GA4 트래킹 함수 직접 선언
+  const trackEvent = (eventName: string, params: any = {}) => {
+    if (typeof window !== 'undefined') {
+      const windowWithAds = window as any;
+      if (windowWithAds.gtag) {
+        windowWithAds.gtag('event', eventName, params);
+      }
+    }
+  };
 
   // GA4 트래킹 및 구글 애드센스 안전 푸시 레이어
   useEffect(() => {
@@ -43,7 +56,6 @@ export default function FoodWorldCup() {
         // 중복 초기화 에러 방어
       }
     }
-    // 👇 Vercel의 깐깐한 에러 검출을 무시하고 강제로 통과시키는 마법의 주석입니다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen]);
 
@@ -84,7 +96,7 @@ export default function FoodWorldCup() {
 
   return (
     <div className="max-w-[480px] mx-auto min-h-screen bg-[#F7F6F2] pb-12 text-[#1C1C1A]">
-      {/* 상단 AdSense 광고 영역 (빌드 에러 완벽 해결 패치) */}
+      {/* 상단 AdSense 광고 영역 */}
       <div className="p-4 min-h-[100px]">
         <ins 
           className="adsbygoogle"
