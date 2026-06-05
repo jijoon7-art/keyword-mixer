@@ -9,7 +9,8 @@ import {
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
   Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
   Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode,
-  Heart, Search, LayoutDashboard, Key, Stamp
+  Heart, Search, LayoutDashboard, Key, Stamp, 
+  Trophy // ← 트로피 아이콘을 새로 추가했습니다.
 } from 'lucide-react'
 
 const MENU = [
@@ -37,7 +38,6 @@ const MENU = [
       { href: '/date-calculator', label: '날짜 계산기', icon: Calendar },
       { href: '/time-calculator', label: '시간 계산기', icon: Clock },
       { href: '/number-to-korean', label: '숫자 한글 변환기', icon: Type },
-
     ],
   },
   {
@@ -91,6 +91,7 @@ const MENU = [
   {
     category: '재미/운세',
     items: [
+      { href: '/food-worldcup', label: '음식 이상형 월드컵', icon: Trophy }, // ← 주목도를 높이기 위해 맨 위에 트로피 아이콘과 함께 추가했습니다!
       { href: '/zodiac-calculator', label: '띠/별자리 계산기', icon: Heart },
       { href: '/love-calculator', label: '궁합 계산기', icon: Heart },
       { href: '/lucky-number', label: '행운 번호 생성기', icon: Heart },
