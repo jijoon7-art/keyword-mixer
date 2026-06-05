@@ -9,8 +9,7 @@ import {
   ImageIcon, Ticket, Smile, AlignLeft, Calculator,
   Baby, Calendar, DollarSign, Timer, Home, TrendingUp,
   Globe, Keyboard, Wifi, Wand2, CreditCard, FileCode,
-  Heart, Search, LayoutDashboard, Key, Stamp, 
-  Trophy // ← 트로피 아이콘을 새로 추가했습니다.
+  Heart, Search, LayoutDashboard, Key, Stamp
 } from 'lucide-react'
 
 const MENU = [
@@ -91,7 +90,7 @@ const MENU = [
   {
     category: '재미/운세',
     items: [
-      { href: '/food-worldcup', label: '음식 이상형 월드컵', icon: Trophy }, // ← 주목도를 높이기 위해 맨 위에 트로피 아이콘과 함께 추가했습니다!
+      { href: '/food-worldcup', label: '음식 이상형 월드컵', icon: Heart }, // ← 안전하게 Heart 아이콘으로 추가 완료!
       { href: '/zodiac-calculator', label: '띠/별자리 계산기', icon: Heart },
       { href: '/love-calculator', label: '궁합 계산기', icon: Heart },
       { href: '/lucky-number', label: '행운 번호 생성기', icon: Heart },
@@ -271,4 +270,3 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
       />
     </>
   )
-}
