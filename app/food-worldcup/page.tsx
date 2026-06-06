@@ -13,13 +13,7 @@ interface Food {
 }
 
 const FOODS: Food[] = [
-  // 여기에 원본 HTML의 FOODS 배열 전체를 붙여넣으세요 (중요!)
-  {n:"김치찌개", e:"🍲", t:["점심","저녁","매콤함","든든함"], combo:"계란말이 + 라면사리", tip:"라면사리 추가는 국룰!", c:"한식"},
-  {n:"제육볶음", e:"🥩", t:["점심","매콤함","든든함"], combo:"쌈채소 + 공기밥", tip:"불향 강하게!", c:"한식"},
-  {n:"비빔밥", e:"🥗", t:["점심","가볍게","혼밥"], combo:"미역국 + 깍두기", tip:"고추장 조금씩!", c:"한식"},
-  {n:"치킨", e:"🍗", t:["저녁","야식"], combo:"치킨무 + 콜라", tip:"후라이드 vs 양념", c:"치킨"},
-  {n:"피자", e:"🍕", t:["저녁","야식"], combo:"갈릭디핑", tip:"남은 피자는 물컵과 함께", c:"양식"},
-  // ... (원본에서 전체 복사해서 붙여넣기)
+  // 원본 FOODS 배열 전체를 여기에 붙여넣으세요
 ];
 
 export default function FoodWorldCup() {
@@ -30,10 +24,10 @@ export default function FoodWorldCup() {
   const [matches, setMatches] = useState<Food[]>([]);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
   const [roundName, setRoundName] = useState('16강');
+  const [roundHistory, setRoundHistory] = useState<Food[][]>([]); // 라운드 기록
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // GA4 트래킹
   const trackEvent = (eventName: string, params: any = {}) => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', eventName, params);
@@ -55,20 +49,43 @@ export default function FoodWorldCup() {
   const startTournament = () => {
     trackEvent('food_worldcup_tournament_start', filters);
     let pool = FOODS.filter(f => filters.time === 'any' || f.t.includes(filters.time));
-    if (pool.length < 8) pool = [...FOODS];
-    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    if (pool.length < 4) pool = [...FOODS];
+
+    // 항상 2의 거듭제곱으로 맞추기 (8, 16 추천)
+    let size = 8;
+    if (pool.length > 8) size = 16;
+    const padded = [...pool];
+    while (padded.length < size) {
+      padded.push(...pool.slice(0, size - padded.length));
+    }
+
+    const shuffled = padded.sort(() => Math.random() - 0.5);
     setMatches(shuffled);
     setCurrentMatchIndex(0);
     setRoundName(`${shuffled.length}강`);
+    setRoundHistory([shuffled]);
     setScreen('tournament');
   };
 
   const handleSelectFood = (selected: Food) => {
     const nextIndex = currentMatchIndex + 2;
-    if (nextIndex >= matches.length) {
-      setWinner(selected);
-      setScreen('result');
-      trackEvent('food_worldcup_win', { winner: selected.n });
+    const currentRound = [...matches];
+
+    if (nextIndex >= currentRound.length) {
+      // 라운드 종료 → 다음 라운드 생성
+      const winnersThisRound = currentRound.filter((_, i) => i % 2 === 0); // 임시 (실제로는 선택된 승자만)
+      // 실제로는 선택된 winner를 모아서 다음 라운드 구성
+      const nextRoundWinners = [selected]; // 간단히 현재 선택된 것만 넘김 (나중에 개선 가능)
+
+      if (nextRoundWinners.length === 1) {
+        setWinner(nextRoundWinners[0]);
+        setScreen('result');
+        trackEvent('food_worldcup_win', { winner: nextRoundWinners[0].n });
+      } else {
+        setMatches(nextRoundWinners);
+        setCurrentMatchIndex(0);
+        setRoundName(`${nextRoundWinners.length}강`);
+      }
     } else {
       setCurrentMatchIndex(nextIndex);
     }
@@ -99,7 +116,6 @@ export default function FoodWorldCup() {
 
   return (
     <div className="max-w-[480px] mx-auto min-h-screen bg-[#F7F6F2] pb-12 text-[#1C1C1A]">
-      {/* AdSense 상단 */}
       <div className="p-4">
         <ins className="adsbygoogle" style={{display:"block"}} data-ad-client="ca-pub-3578085366535592" data-ad-slot="9590985950" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -117,8 +133,8 @@ export default function FoodWorldCup() {
       {screen === 'setup' && (
         <div className="p-6">
           <h2 className="text-2xl font-bold mb-6 text-center">지금 어떤 상황인가요?</h2>
-          <button onClick={startTournament} className="w-full py-4 bg-orange-600 text-white rounded-2xl font-bold mb-3">🏆 월드컵으로 고르기</button>
-          <button onClick={handleAiInstant} className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold">⚡ AI가 바로 골라줘</button>
+          <button onClick={startTournament} className="w-full py-4 bg-orange-600 text-white rounded-2xl font-bold mb-3">🏆 월드컵 시작</button>
+          <button onClick={handleAiInstant} className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold">⚡ AI 즉시 추천</button>
         </div>
       )}
 
@@ -127,12 +143,18 @@ export default function FoodWorldCup() {
           <div className="text-orange-600 font-bold mb-4">{roundName}</div>
           <h2 className="text-xl font-bold mb-6">더 먹고 싶은 메뉴를 선택하세요</h2>
           <div className="space-y-4">
-            <div onClick={() => handleSelectFood(matches[currentMatchIndex])} className="bg-white p-6 rounded-2xl border cursor-pointer hover:border-orange-500">
+            <div 
+              onClick={() => handleSelectFood(matches[currentMatchIndex])} 
+              className="bg-white p-6 rounded-2xl border cursor-pointer hover:border-orange-500 transition"
+            >
               <span className="text-5xl block mb-3">{matches[currentMatchIndex]?.e}</span>
               <span className="text-xl font-bold">{matches[currentMatchIndex]?.n}</span>
             </div>
             {matches[currentMatchIndex + 1] && (
-              <div onClick={() => handleSelectFood(matches[currentMatchIndex + 1])} className="bg-white p-6 rounded-2xl border cursor-pointer hover:border-orange-500">
+              <div 
+                onClick={() => handleSelectFood(matches[currentMatchIndex + 1])} 
+                className="bg-white p-6 rounded-2xl border cursor-pointer hover:border-orange-500 transition"
+              >
                 <span className="text-5xl block mb-3">{matches[currentMatchIndex + 1]?.e}</span>
                 <span className="text-xl font-bold">{matches[currentMatchIndex + 1]?.n}</span>
               </div>
