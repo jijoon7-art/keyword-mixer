@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { trackEvent } from '@/lib/ga';
 
 interface Food {
   n: string;
@@ -31,17 +30,21 @@ export default function FoodWorldCup() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // 취향 리포트 & 스트릭 데이터
+  // 취향 리포트 & 스트릭
   const [prefs, setPrefs] = useState({ tags: {} as Record<string, number>, wins: {} as Record<string, number>, streak: 0, lastDate: '' });
-  const [history, setHistory] = useState<any[]>([]);
 
-  // localStorage 로드
+  // GA4 트래킹 함수 (lib/ga.ts 없이 직접 구현)
+  const trackEvent = (eventName: string, params: Record<string, any> = {}) => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', eventName, params);
+    } else {
+      console.log(`[GA4] ${eventName}`, params);
+    }
+  };
+
   useEffect(() => {
-    const savedPrefs = localStorage.getItem('fwc_prefs');
-    if (savedPrefs) setPrefs(JSON.parse(savedPrefs));
-
-    const savedHist = localStorage.getItem('fwc_hist');
-    if (savedHist) setHistory(JSON.parse(savedHist));
+    const saved = localStorage.getItem('fwc_prefs');
+    if (saved) setPrefs(JSON.parse(saved));
   }, []);
 
   const savePrefs = (newPrefs: any) => {
@@ -65,14 +68,13 @@ export default function FoodWorldCup() {
     const today = new Date().toDateString();
     const newPrefs = { ...prefs };
     if (newPrefs.lastDate === today) return;
-
     const yesterday = new Date(Date.now() - 86400000).toDateString();
-    newPrefs.streak = newPrefs.lastDate === yesterday ? newPrefs.streak + 1 : 1;
+    newPrefs.streak = newPrefs.lastDate === yesterday ? (newPrefs.streak || 0) + 1 : 1;
     newPrefs.lastDate = today;
     savePrefs(newPrefs);
   };
 
-  // GA4
+  // GA4 화면 진입 추적
   useEffect(() => {
     trackEvent('food_worldcup_view', { screen });
   }, [screen]);
@@ -155,11 +157,13 @@ export default function FoodWorldCup() {
         </div>
       )}
 
-      {screen === 'setup' && (
-        <div className="p-6">
-          <h2 className="text-2xl font-bold mb-6 text-center">지금 어떤 상황인가요?</h2>
-          <button onClick={startTournament} className="w-full py-4 bg-orange-600 text-white rounded-2xl font-bold mb-3">월드컵 시작</button>
-          <button onClick={handleAiInstant} className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold">⚡ AI 즉시 추천</button>
+      {screen === 'ai' && aiRecommended && (
+        <div className="p-6 text-center">
+          <div className="text-7xl mb-6">{aiRecommended.e}</div>
+          <h2 className="text-3xl font-bold mb-4">{aiRecommended.n}</h2>
+          <p className="text-sm text-gray-600 mb-8">{aiRecommended.tip}</p>
+          <button onClick={doShare} className="w-full py-3 bg-blue-600 text-white rounded-xl mb-3">📤 공유하기</button>
+          <button onClick={() => setScreen('home')} className="w-full py-4 bg-gray-800 text-white rounded-2xl">처음으로</button>
         </div>
       )}
 
@@ -179,16 +183,6 @@ export default function FoodWorldCup() {
               </div>
             )}
           </div>
-        </div>
-      )}
-
-      {screen === 'ai' && aiRecommended && (
-        <div className="p-6 text-center">
-          <div className="text-7xl mb-6">{aiRecommended.e}</div>
-          <h2 className="text-3xl font-bold mb-4">{aiRecommended.n}</h2>
-          <p className="text-sm text-gray-600 mb-8">{aiRecommended.tip}</p>
-          <button onClick={doShare} className="w-full py-3 bg-blue-600 text-white rounded-xl mb-3">📤 공유하기</button>
-          <button onClick={() => setScreen('home')} className="w-full py-4 bg-gray-800 text-white rounded-2xl">처음으로</button>
         </div>
       )}
 
