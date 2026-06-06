@@ -14,7 +14,7 @@ interface Food {
 }
 
 const FOODS: Food[] = [
-  // 여기에 원본 HTML의 FOODS 배열 전체를 붙여넣으세요 (50개 이상)
+  // 원본 HTML의 FOODS 배열 전체를 여기에 붙여넣으세요
   {n:"김치찌개", e:"🍲", t:["점심","저녁","매콤함","든든함"], combo:"계란말이 + 라면사리", tip:"라면사리 추가는 국룰!", c:"한식"},
   {n:"제육볶음", e:"🥩", t:["점심","매콤함","든든함"], combo:"쌈채소 + 공기밥", tip:"불향 강하게!", c:"한식"},
   // ... (전체 복사)
@@ -31,12 +31,17 @@ export default function FoodWorldCup() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // localStorage 기반 취향 기록
-  const [prefs, setPrefs] = useState({ tags: {} as Record<string, number>, wins: {} as Record<string, number> });
+  // 취향 리포트 & 스트릭 데이터
+  const [prefs, setPrefs] = useState({ tags: {} as Record<string, number>, wins: {} as Record<string, number>, streak: 0, lastDate: '' });
+  const [history, setHistory] = useState<any[]>([]);
 
+  // localStorage 로드
   useEffect(() => {
-    const saved = localStorage.getItem('fwc_prefs');
-    if (saved) setPrefs(JSON.parse(saved));
+    const savedPrefs = localStorage.getItem('fwc_prefs');
+    if (savedPrefs) setPrefs(JSON.parse(savedPrefs));
+
+    const savedHist = localStorage.getItem('fwc_hist');
+    if (savedHist) setHistory(JSON.parse(savedHist));
   }, []);
 
   const savePrefs = (newPrefs: any) => {
@@ -53,6 +58,17 @@ export default function FoodWorldCup() {
   const recordWin = (name: string) => {
     const newPrefs = { ...prefs };
     newPrefs.wins[name] = (newPrefs.wins[name] || 0) + 1;
+    savePrefs(newPrefs);
+  };
+
+  const bumpStreak = () => {
+    const today = new Date().toDateString();
+    const newPrefs = { ...prefs };
+    if (newPrefs.lastDate === today) return;
+
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    newPrefs.streak = newPrefs.lastDate === yesterday ? newPrefs.streak + 1 : 1;
+    newPrefs.lastDate = today;
     savePrefs(newPrefs);
   };
 
@@ -92,42 +108,31 @@ export default function FoodWorldCup() {
       setWinner(selected);
       setScreen('result');
       recordWin(selected.n);
+      bumpStreak();
       trackEvent('food_worldcup_win', { winner: selected.n });
     } else {
       setCurrentMatchIndex(nextIndex);
     }
   };
 
-  // 공유 이미지 생성 (Canvas)
   const doShare = () => {
     if (!winner || !canvasRef.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d')!;
-    canvas.width = 600;
-    canvas.height = 400;
+    canvas.width = 600; canvas.height = 400;
 
-    ctx.fillStyle = '#1C1C1A';
-    ctx.fillRect(0, 0, 600, 400);
-
-    ctx.font = 'bold 44px sans-serif';
-    ctx.fillStyle = '#fff';
-    ctx.textAlign = 'center';
+    ctx.fillStyle = '#1C1C1A'; ctx.fillRect(0, 0, 600, 400);
+    ctx.font = 'bold 44px sans-serif'; ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
     ctx.fillText(winner.n, 300, 220);
-
-    ctx.font = '90px sans-serif';
-    ctx.fillText(winner.e, 300, 150);
-
-    ctx.font = 'bold 20px sans-serif';
-    ctx.fillStyle = '#E85D2F';
+    ctx.font = '90px sans-serif'; ctx.fillText(winner.e, 300, 150);
+    ctx.font = 'bold 20px sans-serif'; ctx.fillStyle = '#E85D2F';
     ctx.fillText('오늘 뭐 먹지? 월드컵 우승', 300, 280);
 
     canvas.toBlob(blob => {
       if (blob) {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = url;
-        a.download = `오늘뭐먹지_${winner.n}.png`;
-        a.click();
+        a.href = url; a.download = `오늘뭐먹지_${winner.n}.png`; a.click();
         URL.revokeObjectURL(url);
       }
     });
@@ -141,7 +146,6 @@ export default function FoodWorldCup() {
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
-      {/* 홈 화면 */}
       {screen === 'home' && (
         <div className="px-5 pt-8 text-center">
           <h1 className="text-4xl font-bold mb-2 text-orange-600">🍽️ 오늘 뭐 먹지?</h1>
@@ -151,18 +155,14 @@ export default function FoodWorldCup() {
         </div>
       )}
 
-      {/* AI 즉시 추천 */}
-      {screen === 'ai' && aiRecommended && (
-        <div className="p-6 text-center">
-          <div className="text-7xl mb-6">{aiRecommended.e}</div>
-          <h2 className="text-3xl font-bold mb-4">{aiRecommended.n}</h2>
-          <p className="text-sm text-gray-600 mb-8">{aiRecommended.tip}</p>
-          <button onClick={doShare} className="w-full py-3 bg-blue-600 text-white rounded-xl mb-3">📤 공유하기</button>
-          <button onClick={() => setScreen('home')} className="w-full py-4 bg-gray-800 text-white rounded-2xl">처음으로</button>
+      {screen === 'setup' && (
+        <div className="p-6">
+          <h2 className="text-2xl font-bold mb-6 text-center">지금 어떤 상황인가요?</h2>
+          <button onClick={startTournament} className="w-full py-4 bg-orange-600 text-white rounded-2xl font-bold mb-3">월드컵 시작</button>
+          <button onClick={handleAiInstant} className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold">⚡ AI 즉시 추천</button>
         </div>
       )}
 
-      {/* 토너먼트 */}
       {screen === 'tournament' && matches.length > 0 && (
         <div className="p-5 text-center">
           <div className="text-orange-600 font-bold mb-4">{roundName}</div>
@@ -182,7 +182,16 @@ export default function FoodWorldCup() {
         </div>
       )}
 
-      {/* 결과 화면 */}
+      {screen === 'ai' && aiRecommended && (
+        <div className="p-6 text-center">
+          <div className="text-7xl mb-6">{aiRecommended.e}</div>
+          <h2 className="text-3xl font-bold mb-4">{aiRecommended.n}</h2>
+          <p className="text-sm text-gray-600 mb-8">{aiRecommended.tip}</p>
+          <button onClick={doShare} className="w-full py-3 bg-blue-600 text-white rounded-xl mb-3">📤 공유하기</button>
+          <button onClick={() => setScreen('home')} className="w-full py-4 bg-gray-800 text-white rounded-2xl">처음으로</button>
+        </div>
+      )}
+
       {screen === 'result' && winner && (
         <div className="p-6 text-center">
           <div className="text-8xl mb-6">🏆</div>
