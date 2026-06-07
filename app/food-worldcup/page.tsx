@@ -145,7 +145,6 @@ export default function FoodWorldCupPage() {
     setNextRound([]);
     setCurrentMatchIdx(0);
     setRoundLabel('16강');
-    setTop4([]);
     setIsConfirmed(false);
     setScreen('tour');
   };
