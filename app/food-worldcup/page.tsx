@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 // ══════ 1. DATA (원본과 100% 동일한 데이터) ══════
 const FOODS = [
@@ -74,7 +73,6 @@ export default function FoodWorldCupPage() {
   const [nextRound, setNextRound] = useState<any[]>([]);
   const [currentMatchIdx, setCurrentMatchIdx] = useState(0);
   const [roundLabel, setRoundLabel] = useState('16강');
-  const [top4, setTop4] = useState<any[]>([]);
   
   // Result States
   const [winner, setWinner] = useState<any>(null);
@@ -167,7 +165,6 @@ export default function FoodWorldCupPage() {
         setScreen('result');
       } else {
         // Next round setup
-        if (newNextRound.length === 2) setTop4([...top4, ...newNextRound]);
         setMatches(newNextRound);
         setNextRound([]);
         setCurrentMatchIdx(0);
@@ -277,7 +274,7 @@ export default function FoodWorldCupPage() {
   );
 
   const renderSetup = () => {
-    const OptionBtn = ({ g, v, label, hard = false }: any) => {
+    const OptionBtn = ({ g, v, label }: any) => {
       const isSel = setup[g] === v;
       return (
         <button
